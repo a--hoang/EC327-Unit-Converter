@@ -1,0 +1,94 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Unit Converter"
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="false"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:visibility="visible" />
+
+    <GridLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="false"
+        android:paddingTop="0dp"
+        android:id="@+id/gridLayout"
+        android:paddingBottom="0dp">
+
+        <ImageButton
+            android:layout_width="177dp"
+            android:layout_height="177dp"
+            android:id="@+id/martaButton"
+            android:layout_row="3"
+            android:layout_column="3"
+            android:layout_gravity="left|top"
+            android:background="@color/darkBlue"
+            android:padding="2dp"
+            />
+
+        <ImageButton
+            android:layout_width="177dp"
+            android:layout_height="177dp"
+            android:id="@+id/cynthiaButton"
+            android:layout_row="3"
+            android:layout_column="14"
+            android:layout_gravity="right|top"
+            android:background="@color/orange"
+            />
+
+        <ImageButton
+            android:layout_width="177dp"
+            android:layout_height="177dp"
+            android:id="@+id/jpButton"
+            android:layout_row="5"
+            android:layout_column="3"
+            android:layout_gravity="left|bottom"
+            android:background="@color/darkOrange"
+            />
+
+        <ImageButton
+            android:layout_width="177dp"
+            android:layout_height="177dp"
+            android:id="@+id/cindyButton"
+            android:layout_row="5"
+            android:layout_column="14"
+            android:layout_gravity="right|bottom"
+            android:background="@color/blue"
+            />
+    </GridLayout>
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:id="@+id/imageButton4"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/aboutButton"
+        android:layout_below="@+id/gridLayout" />
+
+    <ImageButton
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:id="@+id/aboutButton"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
