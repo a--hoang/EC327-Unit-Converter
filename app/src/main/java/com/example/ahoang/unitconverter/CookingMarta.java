@@ -1,9 +1,11 @@
 package com.example.ahoang.unitconverter;
 
+import android.app.Activity;
 import java.util.Scanner;
+import android.os.Bundle;
 
 
-public class CookingMarta /*extends Activity*/ {
+public class CookingMarta extends Activity {
 
     public static Scanner in = new Scanner(System.in);
 
@@ -53,7 +55,7 @@ public class CookingMarta /*extends Activity*/ {
             finalunit = in.nextInt();
             if (finalunit < 1 || finalunit > 8)
                 System.out.println("Invalid unit. Try again.");
-        } while (finalunit < 1 || finalunit > 4);
+        } while (finalunit < 1 || finalunit > 8);
 
         //convert ml to other unit
         if (finalunit==1) {
@@ -182,7 +184,6 @@ public class CookingMarta /*extends Activity*/ {
             } else if (convtype == 2) {
                 convertDry();
             } else if (convtype == 3) {
-                System.out.println("Hello!!!");
                 convertOven();
             } else {
                 System.out.println("Invalid input. Try again.");
@@ -190,7 +191,7 @@ public class CookingMarta /*extends Activity*/ {
         } while (convtype < 1 || convtype > 3);
     }
 
-    /*
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,5 +199,5 @@ public class CookingMarta /*extends Activity*/ {
         setContentView(R.layout.activity_cookingmarta);
 
     }
-    */
+
 }
