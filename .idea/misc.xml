@@ -87,7 +87,10 @@
       </option>
       <envs />
       <patterns />
-      <method />
+      <method>
+        <option name="Android.Gradle.BeforeRunTask" enabled="false" />
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <list size="0" />
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -106,22 +109,6 @@
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>
 
