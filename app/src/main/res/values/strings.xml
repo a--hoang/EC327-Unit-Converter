@@ -10,4 +10,42 @@
     <color name="orange">#FFBB33</color>
     <color name="grey">#7e7e7e</color>
 
+    <string name="Cooking_Units_Title">CookingMarta</string>
+
+    <string-array name="input_unit_options1">
+    <item>Ounces (solid)</item>
+    <item>Ounces (liquid)</item>
+    <item>Tablespoon (solid)</item>
+    <item>Tablespoon (liquid)</item>
+    <item>Teaspoon (solid)</item>
+    <item>Teaspoon (solid)</item>
+    <item>Cup (solid)</item>
+    <item>Cup (liquid)</item>
+    <item>Pint (liquid)</item>
+    <item>Quart (liquid)</item>
+    <item>Gallon (liquid)</item>
+    <item>Gram</item>
+    <item>Kilogram</item>
+    <item>Milliliter</item>
+    <item>Liter</item>
+</string-array>
+
+    <string-array name="output_unit_options1">
+        <item>Ounces (solid)</item>
+        <item>Ounces (liquid)</item>
+        <item>Tablespoon (solid)</item>
+        <item>Tablespoon (liquid)</item>
+        <item>Teaspoon (solid)</item>
+        <item>Teaspoon (solid)</item>
+        <item>Cup (solid)</item>
+        <item>Cup (liquid)</item>
+        <item>Pint (liquid)</item>
+        <item>Quart (liquid)</item>
+        <item>Gallon (liquid)</item>
+        <item>Gram</item>
+        <item>Kilogram</item>
+        <item>Milliliter</item>
+        <item>Liter</item>
+    </string-array>
+
 </resources>
