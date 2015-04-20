@@ -12,14 +12,58 @@
         android:text="Computer Engineering Conversions"
         android:id="@+id/title"
         android:gravity="center"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:visibility="visible" />
 
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/aboutButton"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp"
+        android:id="@+id/linearLayout">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/input_text"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Convert!"
+            android:id="@+id/button1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/output_text"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/input_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/linearLayout"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:entries="@array/comp_list"
+        />
+
+    <Spinner
+        android:id="@+id/output_spinner"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/comp_list"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/linearLayout"
+        android:layout_toEndOf="@+id/linearLayout" />
+
 
 </RelativeLayout>

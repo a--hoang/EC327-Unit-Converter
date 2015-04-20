@@ -3,33 +3,11 @@ package com.example.ahoang.unitconverter;
 import android.app.Activity;
 import java.util.Scanner;
 import android.os.Bundle;
-import android.media.Image;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 
 public class CookingMarta extends Activity {
 
     public static Scanner in = new Scanner(System.in);
-
-    private Spinner input_unit;
-    private Spinner output_unit;
-    private Button convertbutton;
-    private EditText input_value;
-    private String string_input_value;
-    private double double_input_value;
-    private String [] input_unit_options;
-    private String [] output_unit_options;
-
 
     public static double toMl (double input, int unitinput) {
         double mliter = 0;
@@ -219,44 +197,6 @@ public class CookingMarta extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_cookingmarta);
-        input_value=(EditText) findViewById(R.id.editText);
-        string_input_value = input_value.getText().toString();
-        //double_input_value = Double.valueOf(string_input_value).doubleValue(); THIS IS NOT WORKING
-        //It should throw an error here to verify input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        //Drop down menu
-        input_unit = (Spinner) findViewById(R.id.planets_spinner);
-        input_unit_options = getResources().getStringArray(R.array.input_unit_options1);
-        ArrayAdapter<String> dataAdapter_in = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, input_unit_options);
-        input_unit.setAdapter(dataAdapter_in);
-        dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        output_unit = (Spinner) findViewById(R.id.spinner);
-        output_unit_options = getResources().getStringArray(R.array.output_unit_options1);
-        ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
-        output_unit.setAdapter(dataAdapter_out);
-        dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // NEED ERROR CHECK
-
-        convertbutton = (Button) findViewById(R.id.button);
-
-        convertbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-
-                // Connect to converter functions
-
-
-
-
-
-            }
-        });
-
-
-
 
     }
 

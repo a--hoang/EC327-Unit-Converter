@@ -3,10 +3,7 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-    android:id="@+id/x">
-
-
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home">
 
     <TextView
         android:layout_width="fill_parent"
@@ -16,86 +13,13 @@
         android:id="@+id/title"
         android:gravity="center"
         android:textSize="30dp"
-        android:visibility="visible"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:visibility="visible" />
 
     <ImageButton
         android:layout_width="fill_parent"
         android:layout_height="65dp"
         android:id="@+id/aboutButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_toLeftOf="@+id/textView" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:id="@+id/planets_spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/editText"
-        android:layout_toEndOf="@+id/editText"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"/>
-        //check also strings.xml
-
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:id="@+id/space" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter a Unit"
-        android:id="@+id/textView"
-        android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/space"
-        android:layout_toEndOf="@+id/space" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
-
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/aboutButton"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
-
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/imageButton3"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton2" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Convert"
-        android:id="@+id/button"
-        android:layout_below="@+id/planets_spinner"
-        android:layout_alignLeft="@+id/planets_spinner"
-        android:layout_alignStart="@+id/planets_spinner" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

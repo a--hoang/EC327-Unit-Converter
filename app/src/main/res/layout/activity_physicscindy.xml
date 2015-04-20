@@ -16,10 +16,7 @@
         android:textSize="30dp"
         android:visibility="visible"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignLeft="@+id/textView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_centerHorizontal="true" />
 
     <ImageButton
         android:layout_width="fill_parent"

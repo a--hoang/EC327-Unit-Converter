@@ -28,7 +28,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"
         android:paddingTop="0dp"
         android:id="@+id/gridLayout"
         android:paddingBottom="0dp">
@@ -82,10 +81,15 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_above="@+id/aboutButton"
         android:layout_below="@+id/gridLayout" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textView2" />
 
     <ImageButton
         android:layout_width="fill_parent"
