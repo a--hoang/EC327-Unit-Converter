@@ -2,32 +2,32 @@
 <items version="2" >
 
     <item
-        jar="/Users/martasqmota/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-a2b23aa950dfd1385e4c7151c402139b6df294bd.jar" />
-    </item>
-    <item
-        jar="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jar="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/classes-03b03dcd8ab736ada22f73623fe6f34d38a3d31f.jar" />
+        <dex dex="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/classes-74789c247523f03a1f8e02e756cabbee40805e6b.jar" />
     </item>
     <item
-        jar="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jar="/Users/Clock/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-4e91cab12c46b682a753ba80ade97595fa90ade9.jar" />
+    </item>
+    <item
+        jar="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/classes-07600ef188c6acd1f3b60fbb08e0475dcdbdd775.jar" />
+        <dex dex="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/classes-dcdd80bb0285ad7ff423288ccd28a107ab44383d.jar" />
     </item>
     <item
-        jar="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jar="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Users/martasqmota/Documents/Boston University/EC327/Android/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-6248141c5bcdaaf6437aea12327e3e24f5c56b54.jar" />
+        <dex dex="/Users/Clock/Desktop/Spring 2015/EC 327/Android1/EC327-Unit-Converter/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-ee9f6a5ed4d0988e3b9f6988ac2da9de922fb3a9.jar" />
     </item>
 
 </items>
