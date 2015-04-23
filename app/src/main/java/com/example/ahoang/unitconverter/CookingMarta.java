@@ -1,20 +1,14 @@
 package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
-import java.util.Scanner;
-import android.os.Bundle;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
-import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
+
+import java.util.Scanner;
 
 
 public class CookingMarta extends Activity {
@@ -243,13 +237,6 @@ public class CookingMarta extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
-                // Connect to converter functions
-
-
-
 
 
             }
