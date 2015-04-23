@@ -220,7 +220,6 @@ public class CookingMarta extends Activity {
 
         setContentView(R.layout.activity_cookingmarta);
         input_value=(EditText) findViewById(R.id.editText);
-        string_input_value = input_value.getText().toString();
         //double_input_value = Double.valueOf(string_input_value).doubleValue(); THIS IS NOT WORKING
         //It should throw an error here to verify input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
