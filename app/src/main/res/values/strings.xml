@@ -12,41 +12,32 @@
 
     <string name="Cooking_Units_Title">CookingMarta</string>
 
-    <string-array name="input_unit_options1">
-    <item>Ounces (solid)</item>
-    <item>Ounces (liquid)</item>
-    <item>Tablespoon (solid)</item>
-    <item>Tablespoon (liquid)</item>
-    <item>Teaspoon (solid)</item>
-    <item>Teaspoon (solid)</item>
-    <item>Cup (solid)</item>
-    <item>Cup (liquid)</item>
-    <item>Pint (liquid)</item>
-    <item>Quart (liquid)</item>
-    <item>Gallon (liquid)</item>
+    <string-array name="input_unit_solid">
+    <item>Ounces</item>
+    <item>Tablespoon</item>
+    <item>Teaspoon</item>
+    <item>Cup</item>
+    <item>Pound</item>
     <item>Gram</item>
     <item>Kilogram</item>
+    </string-array>
+
+    <string-array name="input_unit_liquid">
+    <item>Ounces</item>
+    <item>Tablespoon</item>
+    <item>Cup</item>
+    <item>Pint</item>
+    <item>Quart</item>
+    <item>Gallon</item>
     <item>Milliliter</item>
     <item>Liter</item>
     </string-array>
 
-    <string-array name="output_unit_options1">
-        <item>Ounces (solid)</item>
-        <item>Ounces (liquid)</item>
-        <item>Tablespoon (solid)</item>
-        <item>Tablespoon (liquid)</item>
-        <item>Teaspoon (solid)</item>
-        <item>Teaspoon (solid)</item>
-        <item>Cup (solid)</item>
-        <item>Cup (liquid)</item>
-        <item>Pint (liquid)</item>
-        <item>Quart (liquid)</item>
-        <item>Gallon (liquid)</item>
-        <item>Gram</item>
-        <item>Kilogram</item>
-        <item>Milliliter</item>
-        <item>Liter</item>
+    <string-array name="input_unit_oventemp">
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
     </string-array>
+
 
     <string name="Math_Units_Title">MathCynthia</string>
 
