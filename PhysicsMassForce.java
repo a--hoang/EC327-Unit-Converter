@@ -3,6 +3,7 @@ package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,62 +23,11 @@ public class PhysicsMassForce extends Activity {
     private Spinner output_unit;
     private ImageButton convertbutton;
     private EditText input_value;
-    private String string_input_value;
-    private double double_input_value;
+    private EditText output_value;
     private String [] input_unit_options;
     private String [] output_unit_options;
-
-    public static Scanner in = new Scanner(System.in);
-
-    public static double toKg(double mi, int ui) {
-        double kg = 0;
-        if (ui == 1) {
-            kg = mi;
-        } else if (ui == 2) {
-            kg = mi / 2.20462;
-        } else {
-            kg = mi / 9.80665;
-        }
-        return kg;
-    }
-
-    public static double convertMassForce() {
-        int ui, uf;
-        double mi, mf = 0, m_aux;
-
-        //get initial unit
-        do {
-            System.out.println("Choose initial unit: kilograms (1), pounds (2), Newtons (3)");
-            ui = in.nextInt();
-            if (ui < 1 || ui > 3)
-                System.out.println("Invalid unit. Try again.");
-        } while (ui < 1 || ui > 3);
-
-        //convert to kg
-        System.out.println("Initial value: ");
-        mi = in.nextDouble();
-        m_aux = toKg(mi, ui);
-
-        //get final unit
-        do {
-            System.out.println("Choose final unit: kilograms (1), pounds (2), Newtons (3)");
-            uf = in.nextInt();
-            if (uf < 1 || uf > 3)
-                System.out.println("Invalid unit. Try again.");
-        } while (uf < 1 || uf > 3);
-
-        //convert to final unit
-        if (uf == 1) {
-            mf = m_aux;
-        } else if (uf == 2) {
-            mf = m_aux * 2.20462;
-        } else {
-            mf = m_aux * 9.80665;
-        }
-
-        System.out.println("Final value is " + mf);
-        return mf;
-    }
+    private int ui;
+    private int uf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +35,6 @@ public class PhysicsMassForce extends Activity {
 
         setContentView(R.layout.activity_physics_massforce);
         input_value=(EditText) findViewById(R.id.editText);
-        string_input_value = input_value.getText().toString();
-        //double_input_value = Double.valueOf(string_input_value).doubleValue(); THIS IS NOT WORKING
-        //It should throw an error here to verify input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //Drop down menu
         input_unit = (Spinner) findViewById(R.id.planets_spinner);
@@ -101,23 +48,68 @@ public class PhysicsMassForce extends Activity {
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // NEED ERROR CHECK
+
+        output_value = (EditText) findViewById(R.id.finalAmount_text);
 
         convertbutton = (ImageButton) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double mid;
+                double initialValue;
+                double finalValue;
 
-               // Connect to converter functions
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    return;
+                } else {
+                    initialValue = Double.parseDouble(input_value.getText().toString());
+                }
+
+                String inputUnitChoice = input_unit.getSelectedItem().toString();
+                if (inputUnitChoice.equals("kilograms")){
+                    ui = 1;
+                } else if (inputUnitChoice.equals("pounds")) {
+                    ui = 2;
+                } else {
+                    ui = 3;
+                }
+
+                String outputUnitChoice = output_unit.getSelectedItem().toString();
+                if (outputUnitChoice.equals("kilograms")) {
+                    uf = 1;
+                } else if (outputUnitChoice.equals("pounds")) {
+                    uf = 2;
+                } else {
+                    uf = 3;
+                }
+
+                //convert to intermediate
+                if (ui == 1) {
+                    mid = initialValue;
+                } else if (ui == 2) {
+                    mid = initialValue/ 2.20462;
+                } else {
+                    mid = initialValue / 9.80665;
+                }
+
+                //convert to final value
+                if (uf == 1) {
+                    finalValue = mid;
+                } else if (uf == 2) {
+                    finalValue = mid * 2.20462;
+                } else {
+                    finalValue = mid * 9.80665;
+                }
+
+                String convertOutput = Double.toString(finalValue);
+                output_value.setText(convertOutput);
 
             }
+
+
+
         });
-
-
-
-
     }
-
-
 }
