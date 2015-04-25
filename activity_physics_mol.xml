@@ -88,10 +88,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Enter Atomic Mass or Liters (if applicable)"
+            android:text="If using mass, enter atomic mass in kilograms: "
             android:id="@+id/textView2"
             android:layout_below="@+id/editText"
-            android:layout_centerHorizontal="true" />
+            android:layout_toStartOf="@+id/atomic_mass"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -100,9 +102,10 @@
             android:ems="10"
             android:id="@+id/atomic_mass"
             android:layout_below="@+id/textView2"
-            android:layout_alignParentRight="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@+id/textView"
+            android:layout_toStartOf="@+id/textView" />
 
         <Spinner
             android:id="@+id/planets2_spinner"
@@ -139,6 +142,28 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/liters"
+            android:inputType="numberDecimal"
+            android:layout_above="@+id/imageButton"
+            android:layout_toRightOf="@+id/editText"
+            android:layout_alignRight="@+id/switchbutton"
+            android:layout_alignEnd="@+id/switchbutton" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If using molarity, enter volume in liters:"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/editText"
+            android:layout_alignRight="@+id/planets_spinner"
+            android:layout_alignEnd="@+id/planets_spinner"
+            android:layout_above="@+id/liters"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2" />
 
 
     </RelativeLayout>
