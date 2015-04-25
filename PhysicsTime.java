@@ -3,23 +3,18 @@ package com.example.ahoang.unitconverter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
  * Created by Cindy on 4/22/2015.
  */
-public class PhysicsTemp extends Activity{
+public class PhysicsTime extends Activity {
 
     private Spinner input_unit;
     private Spinner output_unit;
@@ -31,25 +26,27 @@ public class PhysicsTemp extends Activity{
     private int ui;
     private int uf;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_physics_temp);
+        setContentView(R.layout.activity_physics_time);
         input_value=(EditText) findViewById(R.id.editText);
 
         //Drop down menu
         input_unit = (Spinner) findViewById(R.id.planets_spinner);
-        input_unit_options = getResources().getStringArray(R.array.temp_types);
+        input_unit_options = getResources().getStringArray(R.array.time_types);
         ArrayAdapter<String> dataAdapter_in = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, input_unit_options);
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         output_unit = (Spinner) findViewById(R.id.planets2_spinner);
-        output_unit_options = getResources().getStringArray(R.array.temp_types);
+        output_unit_options = getResources().getStringArray(R.array.time_types);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // NEED ERROR CHECK
 
         output_value = (EditText) findViewById(R.id.finalAmount_text);
 
@@ -70,50 +67,64 @@ public class PhysicsTemp extends Activity{
                 }
 
                 String inputUnitChoice = input_unit.getSelectedItem().toString();
-                if (inputUnitChoice.equals("Celsius")) {
+                if (inputUnitChoice.equals("seconds")) {
                     ui = 1;
-                } else if (inputUnitChoice.equals("Kelvin")) {
+                } else if (inputUnitChoice.equals("minutes")) {
                     ui = 2;
-                } else {
+                } else if (inputUnitChoice.equals("hours")){
                     ui = 3;
+                } else if (inputUnitChoice.equals("days")) {
+                    ui = 4;
+                } else {
+                    ui = 5;
                 }
 
                 String outputUnitChoice = output_unit.getSelectedItem().toString();
-                if (outputUnitChoice.equals("Celsius")) {
+                if (outputUnitChoice.equals("seconds")) {
                     uf = 1;
-                } else if (outputUnitChoice.equals("Kelvin")) {
+                } else if (outputUnitChoice.equals("minutes")) {
                     uf = 2;
-                } else {
+                } else if (outputUnitChoice.equals("hours")){
                     uf = 3;
+                } else if (outputUnitChoice.equals("days")) {
+                    uf = 4;
+                } else {
+                    uf = 5;
                 }
 
                 //convert to intermediate
                 if (ui == 1) {
                     mid = initialValue;
                 } else if (ui == 2) {
-                    mid = initialValue - 273.15;
+                    mid = initialValue * 60;
+                } else if (ui == 3) {
+                    mid = initialValue * 60 * 60;
+                } else if (ui == 4) {
+                    mid = initialValue * 24 * 60 * 60;
                 } else {
-                    mid = initialValue * 9.0 / 5.0 + 32;
+                    mid = initialValue * 7 * 24 * 60 * 60;
                 }
+
 
                 //convert to final value
                 if (uf == 1) {
                     finalValue = mid;
                 } else if (uf == 2) {
-                    finalValue = Math.round((mid + 273.150) * 100.0) / 100.0;
+                    finalValue = mid / 60;
+                } else if (uf == 3) {
+                    finalValue = mid / 60 / 60;
+                } else if (uf == 4) {
+                    finalValue = mid / 24 / 60 / 60;
                 } else {
-                    finalValue = mid * 5.0 / 9.0 - 32;
+                    finalValue = mid / 7 / 24 / 60 / 60;
                 }
 
-                //double finalValue = convertTemp(initialValue, ui, uf);
                 String convertOutput = Double.toString(finalValue);
                 output_value.setText(convertOutput);
 
             }
 
-
         });
     }
-
 
 }
