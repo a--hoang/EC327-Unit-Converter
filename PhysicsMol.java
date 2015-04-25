@@ -6,13 +6,16 @@ import java.util.Scanner;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 /**
@@ -20,80 +23,19 @@ import android.widget.Spinner;
  */
 public class PhysicsMol extends Activity {
 
-    public static Scanner in = new Scanner(System.in);
-
     private Spinner input_unit;
     private Spinner output_unit;
     private ImageButton convertbutton;
     private EditText input_value;
-    private String string_input_value;
-    private double double_input_value;
+    private EditText output_value;
+    private EditText extraInputAM;
+    private EditText extraInputL;
     private String [] input_unit_options;
     private String [] output_unit_options;
+    private int ui;
+    private int uf;
 
     static final double NA = 6.0221415 * (10 ^ 13);
-
-    public static double toMol(double mi, int ui) {
-        double mol = 0;
-        if (ui == 1) {
-            mol = mi;
-        } else if (ui == 2) {
-            mol = mi / NA;
-        } else if (ui == 3) {
-            System.out.println("Volume in Liters: ");
-            double vol = in.nextDouble();
-            mol = mi * vol;
-        } else {
-            System.out.println("Atomic mass in kg");
-            double am = in.nextDouble();
-            mol = mi / am;
-        }
-        return mol;
-    }
-
-    public static double convertMole() {
-        int ui, uf;
-        double mi, mf = 0, m_aux;
-
-        //get initial unit
-        do {
-            System.out.println("Choose initial unit: moles (1), molecules (2), molarity (3), kg (4)");
-            ui = in.nextInt();
-            if (ui < 1 || ui > 4)
-                System.out.println("Invalid unit. Try again.");
-        } while (ui < 1 || ui > 4);
-
-        //convert to kg
-        System.out.println("Initial value: ");
-        mi = in.nextDouble();
-        m_aux = toMol(mi, ui);
-
-        //get final unit
-        do {
-            System.out.println("Choose final unit: moles (1), molecules (2), molarity (3)");
-            uf = in.nextInt();
-            if (uf < 1 || uf > 3)
-                System.out.println("Invalid unit. Try again.");
-        } while (uf < 1 || uf > 3);
-
-        //convert to final unit
-        if (uf == 1) {
-            mf = m_aux;
-        } else if (uf == 2) {
-            mf = m_aux * NA;
-        } else if (uf == 3) {
-            System.out.println("Volume in Liters: ");
-            double vol = in.nextDouble();
-            mf = mi * vol;
-        } else {
-            System.out.println("Atomic mass in kg");
-            double am = in.nextDouble();
-            mf = m_aux / am;
-        }
-
-        System.out.println("Final value is " + mf);
-        return mf;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +43,8 @@ public class PhysicsMol extends Activity {
 
         setContentView(R.layout.activity_physics_mol);
         input_value=(EditText) findViewById(R.id.editText);
-        string_input_value = input_value.getText().toString();
-        //double_input_value = Double.valueOf(string_input_value).doubleValue(); THIS IS NOT WORKING
-        //It should throw an error here to verify input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        extraInputAM = (EditText) findViewById(R.id.atomic_mass);
+        extraInputL = (EditText) findViewById(R.id.liters);
 
         //Drop down menu
         input_unit = (Spinner) findViewById(R.id.planets_spinner);
@@ -117,19 +58,92 @@ public class PhysicsMol extends Activity {
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // NEED ERROR CHECK
+        output_value = (EditText) findViewById(R.id.finalAmount_text);
 
         convertbutton = (ImageButton) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double mid;
+                double initialValue;
+                double finalValue;
+                double extraAM = 1;
+                double extraL = 1;
 
-                // Connect to converter functions
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    return;
+                } else {
+                    initialValue = Double.parseDouble(input_value.getText().toString());
+                }
 
+                String inputUnitChoice = input_unit.getSelectedItem().toString();
+                if (inputUnitChoice.equals("moles")){
+                    ui = 1;
+                } else if (inputUnitChoice.equals("molecules")) {
+                    ui = 2;
+                } else if (inputUnitChoice.equals("molar")) {
+                    ui = 3;
+                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
+                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    extraL = Double.parseDouble(extraInputL.getText().toString());
+                } else {
+                    ui = 4;
+                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
+                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    extraAM = Double.parseDouble(extraInputAM.getText().toString());
+                }
+
+                String outputUnitChoice = output_unit.getSelectedItem().toString();
+                if (outputUnitChoice.equals("moles")) {
+                    uf = 1;
+                } else if (outputUnitChoice.equals("molecules")) {
+                    uf = 2;
+                } else if (outputUnitChoice.equals("molar")){
+                    uf = 3;
+                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
+                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    extraL = Double.parseDouble(extraInputL.getText().toString());
+                } else {
+                    uf = 4;
+                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
+                        Toast.makeText(getApplicationContext(), "Missing: atomic mass in kilograms", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    extraAM = Double.parseDouble(extraInputAM.getText().toString());
+                }
+
+                //convert to intermediate
+                if (ui == 1) {
+                    mid = initialValue;
+                } else if (ui == 2) {
+                    mid = initialValue / NA;
+                } else if (ui == 3) {
+                    mid = initialValue * extraL;
+                } else {
+                    mid = initialValue / extraAM;
+                }
+
+                //convert to final value
+                if (uf == 1) {
+                    finalValue = mid;
+                } else if (uf == 2) {
+                    finalValue = mid * 2.20462;
+                } else {
+                    finalValue = mid * 9.80665;
+                }
+
+                String convertOutput = Double.toString(finalValue);
+                output_value.setText(convertOutput);
             }
+
         });
     }
-
-
 }
