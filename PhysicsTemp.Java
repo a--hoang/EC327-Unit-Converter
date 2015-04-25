@@ -2,11 +2,16 @@ package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
@@ -16,68 +21,15 @@ import java.util.Scanner;
  */
 public class PhysicsTemp extends Activity{
 
-    public static Scanner in = new Scanner(System.in);
-
     private Spinner input_unit;
     private Spinner output_unit;
     private ImageButton convertbutton;
     private EditText input_value;
-    private String string_input_value;
-    private double double_input_value;
+    private EditText output_value;
     private String [] input_unit_options;
     private String [] output_unit_options;
-
-    public static double toCelsius(double tempi, int ui) {
-        double c = 0;
-        if (ui == 1) {
-            c = tempi;
-        } else if (ui == 2) {
-            c = tempi - 273.15;
-        } else {
-            c = tempi * 9 / 5 + 32;
-        }
-        return c;
-    }
-
-    public static double convertTemp() {
-        int ui, uf;
-        double tempi, tempf = 0, temp_aux;
-
-        //get initial unit
-        do {
-            System.out.println("Choose initial unit: celsius (1), Kelvin (2), fahrenheit (3)");
-            ui = in.nextInt();
-            if (ui < 1 || ui > 3)
-                System.out.println("Invalid unit. Try again.");
-        } while (ui < 1 || ui > 3);
-
-        //convert to Celsius
-        System.out.println("Initial value: ");
-        tempi = in.nextDouble();
-        temp_aux = toCelsius(tempi, ui);
-
-        //get final unit
-        do {
-            System.out.println("Choose final unit: celsius (1), Kelvin (2), fahrenheit (3)");
-            uf = in.nextInt();
-            if (uf < 1 || uf > 3)
-                System.out.println("Invalid unit. Try again.");
-        } while (uf < 1 || uf > 3);
-
-        //convert to final unit
-        if (uf == 1) {
-            tempf = temp_aux;
-        } else if (uf == 2) {
-            DecimalFormat df = new DecimalFormat(".##");
-            tempf = Math.round((temp_aux + 273.150) * 100.0) / 100.0;
-        } else {
-            tempf = temp_aux * 5 / 9 - 32;
-        }
-
-        System.out.println("Final value is " + tempf);
-        return tempf;
-    }
-
+    private int ui;
+    private int uf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +37,6 @@ public class PhysicsTemp extends Activity{
 
         setContentView(R.layout.activity_physics_temp);
         input_value=(EditText) findViewById(R.id.editText);
-        string_input_value = input_value.getText().toString();
-        //double_input_value = Double.valueOf(string_input_value).doubleValue(); THIS IS NOT WORKING
-        //It should throw an error here to verify input!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         //Drop down menu
         input_unit = (Spinner) findViewById(R.id.planets_spinner);
@@ -101,17 +50,68 @@ public class PhysicsTemp extends Activity{
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // NEED ERROR CHECK
+
+        output_value = (EditText) findViewById(R.id.finalAmount_text);
 
         convertbutton = (ImageButton) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                double mid;
+                double initialValue;
+                double finalValue;
 
-                // Connect to converter functions
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    return;
+                } else {
+                    initialValue = Double.parseDouble(input_value.getText().toString());
+                }
+
+                String inputUnitChoice = input_unit.getSelectedItem().toString();
+                if (inputUnitChoice.equals("Celsius")) {
+                    ui = 1;
+                } else if (inputUnitChoice.equals("Kelvin")) {
+                    ui = 2;
+                } else {
+                    ui = 3;
+                }
+
+                String outputUnitChoice = output_unit.getSelectedItem().toString();
+                if (outputUnitChoice.equals("Celsius")) {
+                    uf = 1;
+                } else if (outputUnitChoice.equals("Kelvin")) {
+                    uf = 2;
+                } else {
+                    uf = 3;
+                }
+
+                //convert to intermediate
+                if (ui == 1) {
+                    mid = initialValue;
+                } else if (ui == 2) {
+                    mid = initialValue - 273.15;
+                } else {
+                    mid = initialValue * 9.0 / 5.0 + 32;
+                }
+
+                //convert to final value
+                if (uf == 1) {
+                    finalValue = mid;
+                } else if (uf == 2) {
+                    finalValue = Math.round((mid + 273.150) * 100.0) / 100.0;
+                } else {
+                    finalValue = mid * 5.0 / 9.0 - 32;
+                }
+
+                //double finalValue = convertTemp(initialValue, ui, uf);
+                String convertOutput = Double.toString(finalValue);
+                output_value.setText(convertOutput);
 
             }
+
+
         });
     }
 
