@@ -34,6 +34,7 @@ public class PhysicsMol extends Activity {
     private String [] output_unit_options;
     private int ui;
     private int uf;
+    private Button switchButton;
 
     static final double NA = 6.0221415 * (10 ^ 13);
 
@@ -65,9 +66,9 @@ public class PhysicsMol extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double mid;
+                double mid = 0;
                 double initialValue;
-                double finalValue;
+                double finalValue = 0;
                 double extraAM = 1;
                 double extraL = 1;
 
@@ -78,47 +79,30 @@ public class PhysicsMol extends Activity {
                     initialValue = Double.parseDouble(input_value.getText().toString());
                 }
 
-                String inputUnitChoice = input_unit.getSelectedItem().toString();
-                if (inputUnitChoice.equals("moles")){
-                    ui = 1;
-                } else if (inputUnitChoice.equals("molecules")) {
-                    ui = 2;
-                } else if (inputUnitChoice.equals("molar")) {
-                    ui = 3;
-                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
-                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    extraL = Double.parseDouble(extraInputL.getText().toString());
-                } else {
-                    ui = 4;
-                    if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
-                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    extraAM = Double.parseDouble(extraInputAM.getText().toString());
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
-                String outputUnitChoice = output_unit.getSelectedItem().toString();
-                if (outputUnitChoice.equals("moles")) {
-                    uf = 1;
-                } else if (outputUnitChoice.equals("molecules")) {
-                    uf = 2;
-                } else if (outputUnitChoice.equals("molar")){
-                    uf = 3;
+                if (ui == 3 || uf == 3) {
                     if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
                         Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
                         return;
+                    } else {
+                        extraL = Double.parseDouble(extraInputL.getText().toString());
                     }
-                    extraL = Double.parseDouble(extraInputL.getText().toString());
-                } else {
-                    uf = 4;
+
+                } else if (ui == 4 || uf == 4) {
                     if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
-                        Toast.makeText(getApplicationContext(), "Missing: atomic mass in kilograms", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
                         return;
+                    } else {
+                        extraAM = Double.parseDouble(extraInputAM.getText().toString());
                     }
-                    extraAM = Double.parseDouble(extraInputAM.getText().toString());
                 }
+
 
                 //convert to intermediate
                 if (ui == 1) {
@@ -127,7 +111,7 @@ public class PhysicsMol extends Activity {
                     mid = initialValue / NA;
                 } else if (ui == 3) {
                     mid = initialValue * extraL;
-                } else {
+                } else if (ui == 4) {
                     mid = initialValue / extraAM;
                 }
 
@@ -135,15 +119,28 @@ public class PhysicsMol extends Activity {
                 if (uf == 1) {
                     finalValue = mid;
                 } else if (uf == 2) {
-                    finalValue = mid * 2.20462;
-                } else {
-                    finalValue = mid * 9.80665;
+                    finalValue = mid * NA;
+                } else if (uf == 3) {
+                    finalValue = mid / extraL;
+                } else if (uf == 4) {
+                    finalValue = mid * extraAM;
                 }
 
                 String convertOutput = Double.toString(finalValue);
                 output_value.setText(convertOutput);
             }
 
+        });
+
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
+            }
         });
     }
 }
