@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/number_api"
-        android:id="@+id/textView2"
+        android:id="@+id/numberText"
         android:layout_alignRight="@+id/jpButton"
         android:layout_alignEnd="@+id/jpButton"
         android:layout_alignParentLeft="true"
