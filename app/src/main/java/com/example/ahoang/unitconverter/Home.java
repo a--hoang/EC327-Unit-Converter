@@ -1,19 +1,17 @@
 package com.example.ahoang.unitconverter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
+public class Home extends ActionBarActivity implements View.OnClickListener{
 
-public class Home extends Activity implements View.OnClickListener{
-
-    //Creating the EditText object
-    private EditText et;
+    private TextView numTextView;
 
     //Creating ImageButton objects, which extend (inherit) the View class - used to navigate
     private ImageButton buttonMarta;
@@ -37,6 +35,18 @@ public class Home extends Activity implements View.OnClickListener{
         buttonCynthia.setOnClickListener(this);
         buttonJP.setOnClickListener(this);
         buttonCindy.setOnClickListener(this);
+
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            temp = new DownloadTask().execute().get();
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
     }
 
     @Override public void onClick(View v) {
@@ -65,7 +75,6 @@ public class Home extends Activity implements View.OnClickListener{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
