@@ -63,6 +63,7 @@ public class PhysicsPressure extends Activity {
 
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     initialValue = Double.parseDouble(input_value.getText().toString());
