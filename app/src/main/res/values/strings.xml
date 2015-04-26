@@ -41,7 +41,12 @@
 
     <string name="Math_Units_Title">MathCynthia</string>
 
-    <string-array name="math_first_unit_options">
+    <string-array name="first_unit_angles">
+        <item>Degree</item>
+        <item>Radian</item>
+    </string-array>
+
+    <string-array name="first_unit_lengths">
         <item>Megameter</item>
         <item>Kilometer</item>
         <item>Hectometer</item>
@@ -53,32 +58,22 @@
         <item>Micrometer</item>
         <item>Nanometer</item>
         <item>Picometer</item>
-        <item>Degree</item>
-        <item>Radian</item>
         <item>Inch</item>
         <item>Foot</item>
         <item>Yard</item>
         <item>Mile</item>
     </string-array>
 
-    <string-array name="math_last_unit_options">
-        <item>Megameter</item>
+    <string-array name="first_unit_area_volume">
         <item>Kilometer</item>
-        <item>Hectometer</item>
-        <item>Decameter</item>
         <item>Meter</item>
-        <item>Decimeter</item>
         <item>Centimeter</item>
         <item>Millimeter</item>
-        <item>Micrometer</item>
-        <item>Nanometer</item>
-        <item>Picometer</item>
-        <item>Degree</item>
-        <item>Radian</item>
         <item>Inch</item>
         <item>Foot</item>
         <item>Yard</item>
         <item>Mile</item>
     </string-array>
+
 
 </resources>

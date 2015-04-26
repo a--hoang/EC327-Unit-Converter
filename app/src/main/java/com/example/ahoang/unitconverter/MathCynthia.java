@@ -24,11 +24,11 @@ public class MathCynthia extends Activity {
     private Spinner last_unit;
     private Button convertbutton;
     private EditText first_value;
-    private String string_first_value;
+    private String [] string_first_value;
     private double double_first_value;
     private String [] first_unit_options;
     private String [] last_unit_options;
-
+/*
     //0=Mm,1=km,2=hm,3=dm,4=m,5=dim,6=cm,7=mm,8=um,9=nm,10=pm,11=inch,12=feet,13=yard,14=mile
     public static double tometer(double input,int funit) {
         double con;
@@ -393,4 +393,5 @@ public class MathCynthia extends Activity {
             }
         });
     }
+    */
 }
