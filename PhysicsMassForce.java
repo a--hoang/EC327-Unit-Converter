@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Scanner;
 
@@ -28,6 +29,7 @@ public class PhysicsMassForce extends Activity {
     private String [] output_unit_options;
     private int ui;
     private int uf;
+    private Button switchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +58,9 @@ public class PhysicsMassForce extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double mid;
+                double mid = 0;
                 double initialValue;
-                double finalValue;
+                double finalValue = 0;
 
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
@@ -67,22 +69,11 @@ public class PhysicsMassForce extends Activity {
                     initialValue = Double.parseDouble(input_value.getText().toString());
                 }
 
-                String inputUnitChoice = input_unit.getSelectedItem().toString();
-                if (inputUnitChoice.equals("kilograms")){
-                    ui = 1;
-                } else if (inputUnitChoice.equals("pounds")) {
-                    ui = 2;
-                } else {
-                    ui = 3;
-                }
-
-                String outputUnitChoice = output_unit.getSelectedItem().toString();
-                if (outputUnitChoice.equals("kilograms")) {
-                    uf = 1;
-                } else if (outputUnitChoice.equals("pounds")) {
-                    uf = 2;
-                } else {
-                    uf = 3;
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 //convert to intermediate
@@ -90,7 +81,7 @@ public class PhysicsMassForce extends Activity {
                     mid = initialValue;
                 } else if (ui == 2) {
                     mid = initialValue/ 2.20462;
-                } else {
+                } else if (ui == 3) {
                     mid = initialValue / 9.80665;
                 }
 
@@ -99,7 +90,7 @@ public class PhysicsMassForce extends Activity {
                     finalValue = mid;
                 } else if (uf == 2) {
                     finalValue = mid * 2.20462;
-                } else {
+                } else if (uf == 3) {
                     finalValue = mid * 9.80665;
                 }
 
@@ -107,9 +98,17 @@ public class PhysicsMassForce extends Activity {
                 output_value.setText(convertOutput);
 
             }
+        });
 
-
-
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
+            }
         });
     }
 }
