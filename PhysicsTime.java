@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Scanner;
 
@@ -25,6 +27,7 @@ public class PhysicsTime extends Activity {
     private String [] output_unit_options;
     private int ui;
     private int uf;
+    private Button switchButton;
 
 
     @Override
@@ -55,9 +58,9 @@ public class PhysicsTime extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double mid;
-                double initialValue;
-                double finalValue;
+                double mid = 0;
+                double initialValue = 0;
+                double finalValue = 0;
 
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
@@ -66,30 +69,11 @@ public class PhysicsTime extends Activity {
                     initialValue = Double.parseDouble(input_value.getText().toString());
                 }
 
-                String inputUnitChoice = input_unit.getSelectedItem().toString();
-                if (inputUnitChoice.equals("seconds")) {
-                    ui = 1;
-                } else if (inputUnitChoice.equals("minutes")) {
-                    ui = 2;
-                } else if (inputUnitChoice.equals("hours")){
-                    ui = 3;
-                } else if (inputUnitChoice.equals("days")) {
-                    ui = 4;
-                } else {
-                    ui = 5;
-                }
-
-                String outputUnitChoice = output_unit.getSelectedItem().toString();
-                if (outputUnitChoice.equals("seconds")) {
-                    uf = 1;
-                } else if (outputUnitChoice.equals("minutes")) {
-                    uf = 2;
-                } else if (outputUnitChoice.equals("hours")){
-                    uf = 3;
-                } else if (outputUnitChoice.equals("days")) {
-                    uf = 4;
-                } else {
-                    uf = 5;
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 //convert to intermediate
@@ -101,7 +85,7 @@ public class PhysicsTime extends Activity {
                     mid = initialValue * 60 * 60;
                 } else if (ui == 4) {
                     mid = initialValue * 24 * 60 * 60;
-                } else {
+                } else if (ui == 5) {
                     mid = initialValue * 7 * 24 * 60 * 60;
                 }
 
@@ -115,7 +99,7 @@ public class PhysicsTime extends Activity {
                     finalValue = mid / 60 / 60;
                 } else if (uf == 4) {
                     finalValue = mid / 24 / 60 / 60;
-                } else {
+                } else if (uf ==5 ) {
                     finalValue = mid / 7 / 24 / 60 / 60;
                 }
 
@@ -124,6 +108,17 @@ public class PhysicsTime extends Activity {
 
             }
 
+        });
+
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
+            }
         });
     }
 
