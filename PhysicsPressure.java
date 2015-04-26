@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Scanner;
 
@@ -22,9 +24,10 @@ public class PhysicsPressure extends Activity {
     private EditText input_value;
     private EditText output_value;
     private String[] input_unit_options;
-    private String[] output_unit_options;
+    private String [] output_unit_options;
     private int ui;
     private int uf;
+    private Button switchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class PhysicsPressure extends Activity {
 
         output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.pressure_types);
-        ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, input_unit_options);
+        ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
@@ -54,9 +57,9 @@ public class PhysicsPressure extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                double mid;
+                double mid = 0;
                 double initialValue;
-                double finalValue;
+                double finalValue = 0;
 
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
@@ -65,17 +68,12 @@ public class PhysicsPressure extends Activity {
                     initialValue = Double.parseDouble(input_value.getText().toString());
                 }
 
-                String inputUnitChoice = input_unit.getSelectedItem().toString();
-                if (inputUnitChoice.equals("mmHg/Torr")) {
-                    ui = 1;
-                } else if (inputUnitChoice.equals("Pa")) {
-                    ui = 2;
-                } else if (inputUnitChoice.equals("atm")) {
-                    ui = 3;
-                } else {
-                    ui = 4;
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-
 
                 //convert to intermediate
                 if (ui == 1) {
@@ -84,45 +82,38 @@ public class PhysicsPressure extends Activity {
                     mid = initialValue * 0.0075006;
                 } else if (ui == 3) {
                     mid = initialValue * 759.9999520;
-                } else {
+                } else if (ui == 4) {
                     mid = initialValue * 0.7355591;
-                }
-
-
-                String outputUnitChoice = output_unit.getSelectedItem().toString();
-                if (outputUnitChoice.equals("mmHg/Torr")) {
-                    uf = 1;
-                } else if (outputUnitChoice.equals("Pa")) {
-                    uf = 2;
-                } else if (outputUnitChoice.equals("atm")) {
-                    uf = 3;
-                } else {
-                    uf = 4;
-                }
-
-                //convert to intermediate
-                if (ui == 1) {
-                    mid = initialValue;
-                } else if (ui == 2) {
-                    mid = initialValue - 273.15;
-                } else {
-                    mid = initialValue * 9.0 / 5.0 + 32;
                 }
 
                 //convert to final value
                 if (uf == 1) {
                     finalValue = mid;
                 } else if (uf == 2) {
-                    finalValue = Math.round((mid + 273.150) * 100.0) / 100.0;
-                } else {
-                    finalValue = mid * 5.0 / 9.0 - 32;
+                    finalValue = mid / 0.0075006;
+                } else if (uf == 3) {
+                    finalValue = mid / 759.9999520;
+                } else if (uf == 4) {
+                    finalValue = mid / 0.7355591;
                 }
-
                 //double finalValue = convertTemp(initialValue, ui, uf);
                 String convertOutput = Double.toString(finalValue);
                 output_value.setText(convertOutput);
             }
 
         });
+
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
+            }
+        });
+
+
     }
 }
