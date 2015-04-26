@@ -10,6 +10,9 @@
     <color name="orange">#FFBB33</color>
     <color name="grey">#7e7e7e</color>
 
+    <string name="number_fact">"Random Number Factoid:"</string>
+    <string name="number_api">"Random Number Fact Here:"</string>
+
     <string name="Cooking_Units_Title">CookingMarta</string>
 
     <string-array name="input_unit_solid">

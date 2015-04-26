@@ -62,16 +62,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Numberfact goes here"
+        android:text="@string/number_api"
         android:id="@+id/textView2"
         android:layout_alignRight="@+id/jpButton"
         android:layout_alignEnd="@+id/jpButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:layout_below="@+id/cindyButton" />
+        android:textSize="30sp"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/textView4"
+        android:paddingTop="10dp" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:textSize="20sp"
+        android:text="@string/number_fact"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/cynthiaButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

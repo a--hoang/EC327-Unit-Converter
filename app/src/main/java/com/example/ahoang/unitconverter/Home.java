@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-
 public class Home extends ActionBarActivity implements View.OnClickListener{
 
     //Creating the EditText object
