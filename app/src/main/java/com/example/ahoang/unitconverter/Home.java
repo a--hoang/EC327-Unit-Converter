@@ -1,8 +1,8 @@
 package com.example.ahoang.unitconverter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 
-public class Home extends Activity implements View.OnClickListener{
+public class Home extends ActionBarActivity implements View.OnClickListener{
 
     //Creating the EditText object
     private EditText et;
@@ -65,7 +65,6 @@ public class Home extends Activity implements View.OnClickListener{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }

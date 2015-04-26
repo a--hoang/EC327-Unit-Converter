@@ -14,34 +14,17 @@
         android:visibility="invisible"
         android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Unit Converter"
-        android:id="@+id/title"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="false"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:visibility="visible" />
-
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:id="@+id/martaButton"
         android:padding="2dp"
-        android:layout_below="@+id/title"
         android:layout_toStartOf="@+id/centerShim"
         android:layout_alignParentLeft="true"
         android:layout_alignLeft="@+id/cynthiaButton"
         android:layout_toLeftOf="@+id/centerShim"
         android:background="@drawable/ec327_main_martacooking"
-        />
+        android:layout_alignParentTop="true" />
 
     <ImageButton
         android:layout_width="match_parent"
@@ -64,7 +47,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/martaButton"
-        android:layout_toEndOf="@+id/martaButton" />
+        android:layout_toEndOf="@+id/martaButton"
+        android:layout_alignTop="@+id/centerShim" />
 
     <ImageButton
         android:layout_width="match_parent"
