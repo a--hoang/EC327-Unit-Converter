@@ -40,7 +40,9 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         //set api string
         String temp;
         try {
-            temp = new DownloadTask().execute().get();
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 120);
         }
         catch(Exception e){
             temp = "Error, connection refused.";
