@@ -12,8 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Scanner;
-
 /**
  * Created by Cindy on 4/22/2015.
  */
@@ -29,6 +27,7 @@ public class PhysicsPressure extends Activity {
     private int ui;
     private int uf;
     private Button switchButton;
+    private TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +49,21 @@ public class PhysicsPressure extends Activity {
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 

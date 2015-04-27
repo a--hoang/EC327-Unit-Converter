@@ -37,7 +37,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/title"
-            android:hint="Enter Unit"/>
+            android:hint="Enter Value"/>
 
         <Spinner
             android:id="@+id/planets_spinner"
@@ -84,14 +84,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Final Amount"
             android:gravity="center"
             android:id="@+id/finalAmount_text"
             android:layout_alignBottom="@+id/planets2_spinner"
             android:layout_toLeftOf="@+id/planets_spinner"
             android:layout_below="@+id/imageButton"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:hint="Final Amount" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/number_api"
+            android:id="@+id/numberText"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/numTitle"
+            android:layout_alignRight="@+id/numTitle"
+            android:layout_alignEnd="@+id/numTitle" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/numTitle"
+            android:textSize="20sp"
+            android:text="@string/number_fact"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/planets2_spinner"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="20dp" />
 
 
     </RelativeLayout>
