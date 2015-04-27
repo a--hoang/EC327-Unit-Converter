@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
+
 /**
  * Created by jpaftring, ahoang on 4/10/15.
  */
@@ -26,6 +27,7 @@ public class ComputerJP extends Activity {
     Button convert;
     Context thisContext = this;
     TextView numTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,10 @@ public class ComputerJP extends Activity {
         comp_list = getResources().getStringArray(R.array.comp_list);
         bit_list = Arrays.copyOfRange(comp_list,0,6);
         num_list = Arrays.copyOfRange(comp_list,6,10);
+
+        // define all text fields and spinners
+        Input_spin = (Spinner) findViewById(R.id.input_spinner);
+        Output_spin = (Spinner) findViewById(R.id.output_spinner);
 
         //Populate random fact box
         numTextView = (TextView)findViewById(R.id.numberText);
@@ -50,10 +56,6 @@ public class ComputerJP extends Activity {
             System.out.println("Error, connection refused.");
         }
         numTextView.setText(temp);
-
-        // define all text fields and spinners
-        Input_spin = (Spinner) findViewById(R.id.input_spinner);
-        Output_spin = (Spinner) findViewById(R.id.output_spinner);
 
         ArrayAdapter<String> dataAdapter_in = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, comp_list);
         Input_spin.setAdapter(dataAdapter_in);
@@ -384,18 +386,8 @@ public class ComputerJP extends Activity {
                     }
                 }
 
-
-
-
-
-
             }
         });
-
-
-
-
-
     }
 
 }

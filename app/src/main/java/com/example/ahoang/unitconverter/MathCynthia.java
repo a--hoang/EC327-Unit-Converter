@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MathCynthia extends Activity implements View.OnClickListener{
 
@@ -13,10 +14,11 @@ public class MathCynthia extends Activity implements View.OnClickListener{
     private Button buttonLength;
     private Button buttonVolume;
 
+    private TextView numTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_mathcynthia);
 
         buttonAngle = (Button) findViewById(R.id.button);
@@ -28,6 +30,22 @@ public class MathCynthia extends Activity implements View.OnClickListener{
         buttonArea.setOnClickListener(this);
         buttonLength.setOnClickListener(this);
         buttonVolume.setOnClickListener(this);
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 110);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
+
     }
 
     public void onClick(View v) {

@@ -7,95 +7,94 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import java.util.Scanner;
+import android.widget.TextView;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 
 public class MathCynthia_angle extends Activity {
 
-    public static Scanner in = new Scanner(System.in);
-    private Spinner first_unit;
-    private Spinner last_unit;
+
+    private Spinner input_unit;
+    private Spinner output_unit;
     private Button convertbutton;
-    private EditText first_value;
-    private String [] first_unit_options;
-    private String [] last_unit_options;
+    private EditText input_value;
+    private TextView output_value;
+    private String [] input_unit_options;
+    private String [] output_unit_options;
+    private int ui;
+    private int uf;
+    private Button switchbutton;
 
-    //1 = deg, 2 = rad
-    public static double todeg(double input, int funit) {
-        double angle;
-        if (funit == 1){
-            angle = input;
-        } else {
-            angle = (180/Math.PI)*input;
-        }
-        return angle;
-    }
-
-    public static double convertAngle(){
-        int fv, lv;
-        double fa, ma, la;
-
-        do {
-            System.out.println("First Version: Degree (1), Radian (2)");
-            fv = in.nextInt();
-            if (fv < 0 || fv > 11)
-            {
-                System.out.println("Invalid Input. Try again.");
-            }
-        } while (fv < 0 || fv > 11);
-
-        System.out.println("Initial Angle: ");
-        fa = in.nextDouble();
-        ma = todeg(fa,fv);
-
-        do {
-            System.out.println("First Version: Degree (1), Radian (2)");
-            lv = in.nextInt();
-            if (lv < 0 || lv > 11)
-            {
-                System.out.println("Invalid Input. Try again.");
-            }
-        } while (lv < 0 || lv > 11);
-
-        if (lv == 1){
-            la = ma;
-        } else {
-            la = (180/Math.PI)*ma;
-        }
-        System.out.println("Final Value is: " + la);
-        return la;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_mathcynthia);
-        first_value=(EditText) findViewById(R.id.editText);
+        setContentView(R.layout.activity_math_angle);
+        input_value=(EditText) findViewById(R.id.editText);
 
         //Drop down menu
-        first_unit = (Spinner) findViewById(R.id.planets_spinner);
-        first_unit_options = getResources().getStringArray(R.array.first_unit_angles);
-        ArrayAdapter<String> dataAdapter_in = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, first_unit_options);
-        first_unit.setAdapter(dataAdapter_in);
+        input_unit = (Spinner) findViewById(R.id.planets_spinner);
+        input_unit_options = getResources().getStringArray(R.array.first_unit_angles);
+        ArrayAdapter<String> dataAdapter_in = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, input_unit_options);
+        input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        last_unit = (Spinner) findViewById(R.id.spinner);
-        last_unit_options = getResources().getStringArray(R.array.first_unit_angles);
-        ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, last_unit_options);
-        last_unit.setAdapter(dataAdapter_out);
+        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit_options = getResources().getStringArray(R.array.first_unit_angles);
+        ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
+        output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
 
-        convertbutton = (Button) findViewById(R.id.button);
+        output_value=(TextView) findViewById(R.id.finalAmount_text);
+
+        convertbutton = (Button) findViewById(R.id.button5);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                double initialvalue = 0;
+                double finalvalue;
+                double inter;
+                //1 = deg, 2 = rad
+                if (TextUtils.isEmpty(input_value.getText())) {
+                    Toast.makeText(getApplicationContext(), "Please input a value", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    initialvalue = Double.parseDouble(input_value.getText().toString());
+                }
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (ui == 1) {
+                    inter = initialvalue;
+                } else {
+                    inter = (180 / Math.PI) * initialvalue;
+                }
+                if (uf == 1) {
+                    finalvalue = inter;
+                } else {
+                    finalvalue = (180 / Math.PI) * inter;
+                }
+                output_value.setText(""+finalvalue);
             }
         });
 
+        switchbutton = (Button) findViewById(R.id.button);
+        switchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
+            }
+        });
     }
-
 }
+
+

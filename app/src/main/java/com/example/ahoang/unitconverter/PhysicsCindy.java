@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -18,6 +19,7 @@ public class PhysicsCindy extends Activity implements View.OnClickListener{
     private Button buttonMassForce;
     private Button buttonMol;
 
+    private TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,22 @@ public class PhysicsCindy extends Activity implements View.OnClickListener{
         buttonTime.setOnClickListener(this);
         buttonMassForce.setOnClickListener(this);
         buttonMol.setOnClickListener(this);
+
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 90);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
     }
     public void onClick(View v) {

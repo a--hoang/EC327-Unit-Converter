@@ -16,21 +16,18 @@
         android:textSize="30dp"
         android:visibility="visible"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/aboutButton"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:layout_centerHorizontal="true"
-        android:paddingTop="20dp">
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:id="@+id/linearLayout2">
 
         <Button
             android:layout_width="match_parent"
@@ -55,7 +52,7 @@
             android:id="@+id/button3"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
-           />
+            />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -65,11 +62,32 @@
             android:id="@+id/button4"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
-             />
+            />
 
     </LinearLayout>
 
-    //check also strings.xml
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/numTitle"
+        android:textSize="20sp"
+        android:text="@string/number_fact"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/number_api"
+        android:textSize="30sp"
+        android:id="@+id/numberText"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/numTitle"
+        android:paddingTop="10dp" />
 
 
 </RelativeLayout>

@@ -3,8 +3,6 @@ package com.example.ahoang.unitconverter;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -30,14 +28,12 @@ public class CookingMarta extends Activity implements View.OnClickListener {
         buttonsolid = (Button) findViewById(R.id.button2);
         buttonoventemp = (Button) findViewById(R.id.button4);
 
-
         buttonliquid.setOnClickListener(this);
         buttonsolid.setOnClickListener(this);
         buttonoventemp.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
+    @Override public void onClick(View v) {
         if (v.getId() == R.id.button3) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_liquid.class);
             startActivity(resultActivity);
@@ -48,17 +44,15 @@ public class CookingMarta extends Activity implements View.OnClickListener {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_oventemp.class);
             startActivity(resultActivity);
         }
-
     }
 
-    @Override
-
+            /*
+             @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -75,5 +69,5 @@ public class CookingMarta extends Activity implements View.OnClickListener {
         return super.onOptionsItemSelected(item);
     }
 
-
+   */
 }
