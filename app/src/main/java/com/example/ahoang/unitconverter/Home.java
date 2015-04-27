@@ -1,15 +1,17 @@
 package com.example.ahoang.unitconverter;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Home extends ActionBarActivity implements View.OnClickListener{
+public class Home extends ActionBarActivity implements View.OnClickListener, View.OnTouchListener{
 
     private TextView numTextView;
 
@@ -36,6 +38,11 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
         buttonJP.setOnClickListener(this);
         buttonCindy.setOnClickListener(this);
 
+        buttonMarta.setOnTouchListener(this);
+        buttonCynthia.setOnTouchListener(this);
+        buttonJP.setOnTouchListener(this);
+        buttonCindy.setOnTouchListener(this);
+
         numTextView = (TextView)findViewById(R.id.numberText);
         //set api string
         String temp;
@@ -49,6 +56,22 @@ public class Home extends ActionBarActivity implements View.OnClickListener{
             System.out.println("Error, connection refused.");
         }
         numTextView.setText(temp);
+    }
+
+    @Override public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN: {
+                v.getBackground().setColorFilter(0xe0f47521, PorterDuff.Mode.SRC_ATOP);
+                v.invalidate();
+                break;
+            }
+            case MotionEvent.ACTION_UP: {
+                v.getBackground().clearColorFilter();
+                v.invalidate();
+                break;
+            }
+        }
+        return false;
     }
 
     @Override public void onClick(View v) {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Scanner;
 
@@ -17,6 +18,7 @@ public class CookingMarta extends Activity implements View.OnClickListener {
     private Button buttonliquid;
     private Button buttonsolid;
     private Button buttonoventemp;
+    private TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,50 +26,40 @@ public class CookingMarta extends Activity implements View.OnClickListener {
 
         setContentView(R.layout.activity_cookingmarta);
 
-        buttonliquid = (Button) findViewById(R.id.button3);
+        buttonliquid = (Button) findViewById(R.id.button1);
         buttonsolid = (Button) findViewById(R.id.button2);
-        buttonoventemp = (Button) findViewById(R.id.button4);
+        buttonoventemp = (Button) findViewById(R.id.button3);
 
         buttonliquid.setOnClickListener(this);
         buttonsolid.setOnClickListener(this);
         buttonoventemp.setOnClickListener(this);
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 130);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
     }
 
     @Override public void onClick(View v) {
-        if (v.getId() == R.id.button3) {
+        if (v.getId() == R.id.button1) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_liquid.class);
             startActivity(resultActivity);
         } else if (v.getId() == R.id.button2) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_solid.class);
             startActivity(resultActivity);
-        } else if (v.getId() == R.id.button4) {
+        } else if (v.getId() == R.id.button3) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_oventemp.class);
             startActivity(resultActivity);
         }
     }
-
-            /*
-             @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-   */
 }
