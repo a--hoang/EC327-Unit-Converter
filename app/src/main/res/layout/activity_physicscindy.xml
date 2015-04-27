@@ -29,32 +29,15 @@
         android:layout_toStartOf="@+id/textView"
         android:layout_toLeftOf="@+id/textView" />
 
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/aboutButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_toLeftOf="@+id/textView" />
-
-
-
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:id="@+id/space" />
-
-
-
 
     <ImageButton
         android:layout_width="fill_parent"
         android:layout_height="65dp"
         android:id="@+id/imageButton2"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/aboutButton"
         android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        android:layout_alignEnd="@+id/textView"
+        android:layout_toLeftOf="@+id/textView" />
 
     <ImageButton
         android:layout_width="fill_parent"

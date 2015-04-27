@@ -11,7 +11,7 @@ import android.widget.Button;
 import java.util.Scanner;
 
 
-public class CookingMarta extends Activity {
+public class CookingMarta extends Activity implements View.OnClickListener {
 
     public static Scanner in = new Scanner(System.in);
 
@@ -19,7 +19,7 @@ public class CookingMarta extends Activity {
     private Button buttonliquid;
     private Button buttonsolid;
     private Button buttonoventemp;
-/*
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,27 +36,23 @@ public class CookingMarta extends Activity {
         buttonoventemp.setOnClickListener(this);
     }
 
-    @Override public void onClick(View v) {
-        if(v.getId() == R.id.button3)
-        {
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button3) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_liquid.class);
             startActivity(resultActivity);
-        }
-        else if (v.getId() == R.id.button2)
-        {
+        } else if (v.getId() == R.id.button2) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_solid.class);
             startActivity(resultActivity);
-        }
-        else if (v.getId() == R.id.button4)
-        {
+        } else if (v.getId() == R.id.button4) {
             Intent resultActivity = new Intent(CookingMarta.this, CookingMarta_oventemp.class);
             startActivity(resultActivity);
         }
 
-
+    }
 
     @Override
-            /*
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home, menu);
@@ -79,6 +75,5 @@ public class CookingMarta extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-   */
 
 }

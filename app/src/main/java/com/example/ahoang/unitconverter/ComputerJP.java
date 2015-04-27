@@ -10,12 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Arrays;
 
-
 /**
- * Created by ahoang on 4/10/15.
+ * Created by jpaftring, ahoang on 4/10/15.
  */
 public class ComputerJP extends Activity {
 
@@ -25,6 +25,7 @@ public class ComputerJP extends Activity {
     String Input_unit, Output_unit,Input_data,Output_data;
     Button convert;
     Context thisContext = this;
+    TextView numTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,21 @@ public class ComputerJP extends Activity {
         comp_list = getResources().getStringArray(R.array.comp_list);
         bit_list = Arrays.copyOfRange(comp_list,0,6);
         num_list = Arrays.copyOfRange(comp_list,6,10);
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         // define all text fields and spinners
         Input_spin = (Spinner) findViewById(R.id.input_spinner);

@@ -22,79 +22,54 @@
         android:layout_width="fill_parent"
         android:layout_height="65dp"
         android:id="@+id/aboutButton"
-        android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/textView"
-        android:layout_toLeftOf="@+id/textView" />
+        android:layout_alignParentBottom="true" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Spinner
-        android:id="@+id/planets_spinner"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/editText"
-        android:layout_toEndOf="@+id/editText"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"/>
-    //check also strings.xml
-
-    <Space
-        android:layout_width="20px"
-        android:layout_height="20px"
-        android:id="@+id/space" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Enter a Unit"
-        android:id="@+id/textView"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/space"
-        android:layout_toEndOf="@+id/space" />
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp">
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Angle"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/aboutButton"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Area"
+            android:id="@+id/button2"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold" />
 
-    <ImageButton
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:id="@+id/imageButton3"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton2" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Length"
+            android:id="@+id/button3"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+           />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        android:id="@+id/button"
-        android:layout_below="@+id/planets_spinner"
-        android:layout_alignLeft="@+id/planets_spinner"
-        android:layout_alignStart="@+id/planets_spinner" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volume"
+            android:id="@+id/button4"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+             />
+
+    </LinearLayout>
+
+    //check also strings.xml
 
 
 </RelativeLayout>
