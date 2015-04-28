@@ -20,13 +20,16 @@ import java.util.Arrays;
  */
 public class ComputerJP extends Activity {
 
-    EditText Input_val,Output_val;
+    EditText Input_val;
+    TextView Output_val;
     Spinner Input_spin,Output_spin;
     String [] comp_list,bit_list,num_list;
     String Input_unit, Output_unit,Input_data,Output_data;
     Button convert;
     Context thisContext = this;
     TextView numTextView;
+    private Button switchButton;
+    private int ui, uf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,8 +90,8 @@ public class ComputerJP extends Activity {
         });
 
 
-        Input_val = (EditText) findViewById(R.id.input_text);
-        Output_val = (EditText) findViewById(R.id.output_text);
+        Input_val = (EditText) findViewById(R.id.editText);
+        Output_val = (TextView) findViewById(R.id.output_text);
         //conversions -- couldn't find a better way other than straight if chaining
         convert = (Button) findViewById(R.id.button1);
         convert.setOnClickListener(new View.OnClickListener() {
@@ -388,6 +391,18 @@ public class ComputerJP extends Activity {
 
             }
         });
+
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = Input_spin.getSelectedItemPosition();
+                uf = Output_spin.getSelectedItemPosition();
+                Input_spin.setSelection(uf);
+                Output_spin.setSelection(ui);
+            }
+        });
+
     }
 
 }

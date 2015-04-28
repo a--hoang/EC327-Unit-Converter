@@ -26,7 +26,7 @@ public class MathCynthia_volume extends Activity{
     private String [] output_unit_options;
     private int ui;
     private int uf;
-    private Button switchbutton;
+    private Button switchButton;
 
     //1 = inch, 2 = foot, 3 = yard, 4 = mile, 5 = mm, 6 = cm, 7 = m, 8 = km
     @Override
@@ -43,7 +43,7 @@ public class MathCynthia_volume extends Activity{
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.first_unit_area_volume);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
@@ -52,7 +52,7 @@ public class MathCynthia_volume extends Activity{
 
         output_value =(TextView) findViewById(R.id.finalAmount_text);
 
-        convertbutton = (Button) findViewById(R.id.button5);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,8 +113,8 @@ public class MathCynthia_volume extends Activity{
             }
         });
 
-        switchbutton = (Button) findViewById(R.id.button);
-        switchbutton.setOnClickListener(new View.OnClickListener() {
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ui = input_unit.getSelectedItemPosition();

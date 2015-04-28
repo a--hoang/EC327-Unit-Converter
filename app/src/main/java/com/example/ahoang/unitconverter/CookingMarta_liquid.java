@@ -19,6 +19,8 @@ public class CookingMarta_liquid extends Activity {
     private EditText input_value;
     private String [] input_unit_options;
     private String [] output_unit_options;
+    private int ui, uf;
+    private Button switchButton;
 
     public static double toMl (double input, int unitinput) {
         double mliter = 0;
@@ -97,7 +99,7 @@ public class CookingMarta_liquid extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_cookingmarta);
+        setContentView(R.layout.activity_cooking_liquid);
         input_value=(EditText) findViewById(R.id.editText);
 
         //Drop down menu
@@ -107,20 +109,31 @@ public class CookingMarta_liquid extends Activity {
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.input_unit_liquid);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
 
-        convertbutton = (Button) findViewById(R.id.button);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
+            }
+        });
+
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                input_unit.setSelection(uf);
+                output_unit.setSelection(ui);
             }
         });
 

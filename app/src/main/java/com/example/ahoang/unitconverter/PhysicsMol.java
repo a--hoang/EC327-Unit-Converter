@@ -26,7 +26,7 @@ public class PhysicsMol extends Activity {
 
     private Spinner input_unit;
     private Spinner output_unit;
-    private ImageButton convertbutton;
+    private Button convertbutton;
     private EditText input_value;
     private TextView output_value;
     private EditText extraInputAM;
@@ -62,7 +62,7 @@ public class PhysicsMol extends Activity {
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
-        convertbutton = (ImageButton) findViewById(R.id.imageButton);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -24,7 +24,7 @@ public class MathCynthia_area extends Activity{
     private String [] input_unit_options;
     private String [] output_unit_options;
     private TextView output_value;
-    private Button switchbutton;
+    private Button switchButton;
     private int ui;
     private int uf;
 
@@ -33,7 +33,7 @@ public class MathCynthia_area extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_mathcynthia);
+        setContentView(R.layout.activity_math_area);
         input_value=(EditText) findViewById(R.id.editText);
 
         //Drop down menu
@@ -43,7 +43,7 @@ public class MathCynthia_area extends Activity{
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.first_unit_area_volume);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
@@ -52,7 +52,7 @@ public class MathCynthia_area extends Activity{
 
         output_value=(TextView) findViewById(R.id.finalAmount_text);
 
-        convertbutton = (Button) findViewById(R.id.button5);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +70,7 @@ public class MathCynthia_area extends Activity{
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
-                    Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -114,8 +114,8 @@ public class MathCynthia_area extends Activity{
             }
         });
 
-        switchbutton = (Button) findViewById(R.id.button);
-        switchbutton.setOnClickListener(new View.OnClickListener() {
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ui = input_unit.getSelectedItemPosition();

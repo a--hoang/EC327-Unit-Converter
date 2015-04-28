@@ -26,7 +26,9 @@ public class MathCynthia_length extends Activity {
     private TextView output_value;
     private int ui;
     private int uf;
-    private Button switchbutton;
+    private Button switchButton;
+    private TextView numTextView;
+
 
     //0=Mm,1=km,2=hm,3=dm,4=m,5=dim,6=cm,7=mm,8=um,9=nm,10=pm,11=inch,12=feet,13=yard,14=mile
     @Override
@@ -34,7 +36,7 @@ public class MathCynthia_length extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_math_lengths);
-        input_value=(EditText) findViewById(R.id.editText);
+        input_value = (EditText) findViewById(R.id.editText);
 
         //Drop down menu
         input_unit = (Spinner) findViewById(R.id.planets_spinner);
@@ -43,15 +45,31 @@ public class MathCynthia_length extends Activity {
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.first_unit_lengths);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
+
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
-        convertbutton = (Button) findViewById(R.id.button5);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +87,7 @@ public class MathCynthia_length extends Activity {
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
-                    Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (ui == 1){
@@ -140,8 +158,8 @@ public class MathCynthia_length extends Activity {
             }
         });
 
-        switchbutton = (Button) findViewById(R.id.button);
-        switchbutton.setOnClickListener(new View.OnClickListener() {
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ui = input_unit.getSelectedItemPosition();

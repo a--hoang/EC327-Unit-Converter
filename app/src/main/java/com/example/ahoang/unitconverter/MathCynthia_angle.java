@@ -24,7 +24,7 @@ public class MathCynthia_angle extends Activity {
     private String [] output_unit_options;
     private int ui;
     private int uf;
-    private Button switchbutton;
+    private Button switchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class MathCynthia_angle extends Activity {
         input_unit.setAdapter(dataAdapter_in);
         dataAdapter_in.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        output_unit = (Spinner) findViewById(R.id.spinner);
+        output_unit = (Spinner) findViewById(R.id.planets2_spinner);
         output_unit_options = getResources().getStringArray(R.array.first_unit_angles);
         ArrayAdapter<String> dataAdapter_out = new ArrayAdapter<String> (this, android.R.layout.simple_spinner_item, output_unit_options);
         output_unit.setAdapter(dataAdapter_out);
@@ -49,7 +49,7 @@ public class MathCynthia_angle extends Activity {
 
         output_value=(TextView) findViewById(R.id.finalAmount_text);
 
-        convertbutton = (Button) findViewById(R.id.button5);
+        convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +67,7 @@ public class MathCynthia_angle extends Activity {
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
-                    Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (ui == 1) {
@@ -84,8 +84,8 @@ public class MathCynthia_angle extends Activity {
             }
         });
 
-        switchbutton = (Button) findViewById(R.id.button);
-        switchbutton.setOnClickListener(new View.OnClickListener() {
+        switchButton = (Button) findViewById(R.id.switchbutton);
+        switchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ui = input_unit.getSelectedItemPosition();

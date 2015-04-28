@@ -15,7 +15,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Physics Conversions"
+            android:text="Molecular Conversions"
             android:id="@+id/title"
             android:gravity="center"
             android:textSize="30dp"
@@ -27,29 +27,24 @@
             android:layout_alignStart="@+id/textView" />
 
 
-        <ImageButton
-            android:layout_width="fill_parent"
-            android:layout_height="65dp"
-            android:id="@+id/aboutButton"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/textView"
-            android:layout_toLeftOf="@+id/textView" />
-
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/editText"
-            android:layout_below="@+id/textView"
+            android:gravity="center_horizontal|bottom"
+            android:layout_below="@+id/title"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:hint="Enter Value"
+            android:layout_alignBottom="@+id/planets_spinner" />
 
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
+            android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/editText"
             android:layout_toEndOf="@+id/editText" />
 
@@ -58,16 +53,8 @@
             android:layout_height="20px"
             android:id="@+id/space4" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Enter a Unit"
-            android:id="@+id/textView"
-            android:layout_below="@+id/title"
-            android:layout_centerHorizontal="true" />
 
-        <ImageButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:text="Convert"
@@ -81,24 +68,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Final Amount"
             android:gravity="center"
             android:id="@+id/finalAmount_text"
-            android:layout_below="@+id/imageButton"
-            android:layout_toLeftOf="@+id/planets_spinner"
             android:layout_alignBottom="@+id/planets2_spinner"
-            android:layout_toRightOf="@+id/space4"
-            android:layout_toEndOf="@+id/space4" />
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="If using mass, enter atomic mass in kilograms: "
-            android:id="@+id/textView2"
-            android:layout_below="@+id/editText"
-            android:layout_toStartOf="@+id/placeHold"
-            android:layout_toLeftOf="@+id/placeHold" />
+            android:layout_toLeftOf="@+id/planets_spinner"
+            android:layout_below="@+id/imageButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:hint="Final Amount"
+            android:paddingTop="20dp" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -106,11 +84,14 @@
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/atomic_mass"
-            android:layout_below="@+id/textView2"
+            android:layout_below="@+id/editText"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@+id/textView"
-            android:layout_toStartOf="@+id/textView" />
+            android:hint="Atomic Mass (kg)"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="25dp"
+            android:layout_toLeftOf="@+id/placeHold"
+            android:layout_toStartOf="@+id/placeHold" />
 
         <View android:id="@+id/placeHold"
         android:layout_width="0dp"
@@ -122,27 +103,10 @@
             android:id="@+id/planets2_spinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageButton"
-            android:layout_toEndOf="@+id/placeHold"
-            android:layout_alignLeft="@+id/switchbutton"
-            android:layout_alignStart="@+id/switchbutton" />
+            android:layout_toEndOf="@+id/finalAmount_text"
+            android:layout_below="@+id/switchbutton"
+            android:layout_toRightOf="@+id/finalAmount_text" />
 
-        <ImageButton
-            android:layout_width="fill_parent"
-            android:layout_height="65dp"
-            android:id="@+id/imageButton2"
-            android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/aboutButton"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignEnd="@+id/textView" />
-
-        <ImageButton
-            android:layout_width="fill_parent"
-            android:layout_height="65dp"
-            android:id="@+id/imageButton3"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/imageButton2"
-            android:layout_toRightOf="@+id/imageButton2" />
 
         <Button
             android:layout_width="wrap_content"
@@ -152,9 +116,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton"
-            android:layout_above="@+id/planets2_spinner"
-            android:layout_toEndOf="@+id/imageButton2"
-            android:layout_toRightOf="@+id/imageButton2" />
+            android:layout_alignBottom="@+id/imageButton"
+            android:layout_centerHorizontal="true"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -162,21 +125,40 @@
             android:id="@+id/liters"
             android:inputType="numberDecimal"
             android:layout_above="@+id/imageButton"
+            android:layout_below="@id/planets_spinner"
             android:layout_toRightOf="@+id/editText"
             android:layout_alignRight="@+id/switchbutton"
-            android:layout_alignEnd="@+id/switchbutton" />
+            android:layout_alignEnd="@+id/switchbutton"
+            android:hint="Volume (L)"
+            android:gravity="center_horizontal|bottom"
+            android:paddingTop="25dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="If using molarity, enter volume in liters:"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/editText"
-            android:layout_alignRight="@+id/planets_spinner"
-            android:layout_alignEnd="@+id/planets_spinner"
-            android:layout_above="@+id/liters"
-            android:layout_toEndOf="@+id/finalAmount_text"
-            android:layout_toRightOf="@+id/finalAmount_text" />
+            android:text="@string/number_api"
+            android:id="@+id/numberText"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/numTitle"
+            android:layout_alignRight="@+id/numTitle"
+            android:layout_alignEnd="@+id/numTitle" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/numTitle"
+            android:textSize="20sp"
+            android:text="@string/number_fact"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/planets2_spinner"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="20dp" />
+
+
 
 
     </RelativeLayout>
