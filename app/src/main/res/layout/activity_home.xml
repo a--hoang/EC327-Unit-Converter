@@ -57,7 +57,8 @@
         android:background="@drawable/ec327_main_cindyphysics"
         android:layout_alignTop="@+id/cynthiaButton"
         android:layout_toRightOf="@+id/centerShim"
-        android:layout_toEndOf="@+id/centerShim" />
+        android:layout_toEndOf="@+id/centerShim"
+        />
 
     <TextView
         android:layout_width="wrap_content"

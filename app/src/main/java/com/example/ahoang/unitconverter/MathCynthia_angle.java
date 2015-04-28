@@ -78,7 +78,7 @@ public class MathCynthia_angle extends Activity {
                 if (uf == 1) {
                     finalvalue = inter;
                 } else {
-                    finalvalue = (180 / Math.PI) * inter;
+                    finalvalue = (Math.PI / 180) * inter;
                 }
                 output_value.setText(""+finalvalue);
             }
