@@ -62,17 +62,19 @@ public class MathCynthia_volume extends Activity{
                 double inter;
                 //1 = deg, 2 = rad
                 if (TextUtils.isEmpty(input_value.getText())) {
-                    Toast.makeText(getApplicationContext(), "Please input a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     initialvalue = Double.parseDouble(input_value.getText().toString());
                 }
+
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
                     Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 if (ui == 1){
                     inter = Math.pow(initialvalue, (1/3))/39.3701;
                 } else if (ui == 2){
@@ -82,9 +84,9 @@ public class MathCynthia_volume extends Activity{
                 } else if (ui == 4){
                     inter = Math.pow(initialvalue, (1/3))*1609;
                 } else if (ui == 5){
-                    inter = Math.pow(initialvalue, (1/3))/1000;
+                    inter = Math.pow(initialvalue, (1/3))/1000.0;
                 } else if (ui == 6){
-                    inter = Math.pow(initialvalue, (1/3))/100;
+                    inter = Math.pow(initialvalue, (1/3))/100.0;
                 } else if (ui == 7){
                     inter = Math.pow(initialvalue, (1/3));
                 } else {
@@ -106,7 +108,7 @@ public class MathCynthia_volume extends Activity{
                 } else if (uf == 7){
                     finalvalue = Math.pow(inter,3);
                 } else {
-                    finalvalue = Math.pow((inter/1000),3);
+                    finalvalue = Math.pow((inter/1000.0),3);
                 }
 
                 output_value.setText(""+finalvalue);

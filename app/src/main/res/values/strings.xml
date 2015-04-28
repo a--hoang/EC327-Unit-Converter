@@ -17,23 +17,23 @@
 
     <string-array name="input_unit_solid">
     <item>Ounces</item>
-    <item>Tablespoon</item>
-    <item>Teaspoon</item>
-    <item>Cup</item>
-    <item>Pound</item>
-    <item>Gram</item>
-    <item>Kilogram</item>
+    <item>Tablespoons</item>
+    <item>Teaspoons</item>
+    <item>Cups</item>
+    <item>Pounds</item>
+    <item>Grams</item>
+    <item>Kilograms</item>
     </string-array>
 
     <string-array name="input_unit_liquid">
     <item>Ounces</item>
-    <item>Tablespoon</item>
-    <item>Cup</item>
-    <item>Pint</item>
-    <item>Quart</item>
-    <item>Gallon</item>
-    <item>Milliliter</item>
-    <item>Liter</item>
+    <item>Tablespoons</item>
+    <item>Cups</item>
+    <item>Pints</item>
+    <item>Quarts</item>
+    <item>Gallons</item>
+    <item>Milliliters</item>
+    <item>Liters</item>
     </string-array>
 
     <string-array name="input_unit_oventemp">
@@ -46,39 +46,39 @@
 
     <string-array name="first_unit_angles">
         <item>Choose:</item>
-        <item>Degree</item>
-        <item>Radian</item>
+        <item>Degrees</item>
+        <item>Radians</item>
     </string-array>
 
     <string-array name="first_unit_lengths">
         <item>Choose:</item>
-        <item>Megameter</item>
-        <item>Kilometer</item>
-        <item>Hectometer</item>
-        <item>Decameter</item>
-        <item>Meter</item>
-        <item>Decimeter</item>
-        <item>Centimeter</item>
-        <item>Millimeter</item>
-        <item>Micrometer</item>
-        <item>Nanometer</item>
-        <item>Picometer</item>
-        <item>Inch</item>
-        <item>Foot</item>
-        <item>Yard</item>
-        <item>Mile</item>
+        <item>Megameters</item>
+        <item>Kilometers</item>
+        <item>Hectometers</item>
+        <item>Decameters</item>
+        <item>Meters</item>
+        <item>Decimeters</item>
+        <item>Centimeters</item>
+        <item>Millimeters</item>
+        <item>Micrometers</item>
+        <item>Nanometers</item>
+        <item>Picometers</item>
+        <item>Inches</item>
+        <item>Feet</item>
+        <item>Yards</item>
+        <item>Miles</item>
     </string-array>
 
     <string-array name="first_unit_area_volume">
         <item>Choose:</item>
-        <item>Inch</item>
-        <item>Foot</item>
-        <item>Yard</item>
-        <item>Mile</item>
-        <item>Millimeter</item>
-        <item>Centimeter</item>
-        <item>Meter</item>
-        <item>Kilometer</item>
+        <item>Inches</item>
+        <item>Feet</item>
+        <item>Yards</item>
+        <item>Miles</item>
+        <item>Millimeters</item>
+        <item>Centimeters</item>
+        <item>Meters</item>
+        <item>Kilometers</item>
     </string-array>
 
     <string-array name="comp_list">
@@ -106,18 +106,18 @@
     <string-array name="pressure_types">
         <item>Choose:</item>
         <item>mmHg/Torr</item>
-        <item>Pa</item>
-        <item>atm</item>
+        <item>Pascals</item>
+        <item>Atmospheres</item>
         <item>cmH2O</item>
     </string-array>
 
     <string-array name="time_types">
         <item>Choose:</item>
-        <item>seconds</item>
-        <item>minutes</item>
-        <item>hours</item>
-        <item>days</item>
-        <item>weeks</item>
+        <item>Seconds</item>
+        <item>Minutes</item>
+        <item>Hours</item>
+        <item>Days</item>
+        <item>Weeks</item>
     </string-array>
 
     <string-array name="temp_types">
@@ -129,16 +129,16 @@
 
     <string-array name="massforce_types">
         <item>Choose:</item>
-        <item>kilograms</item>
-        <item>pounds</item>
+        <item>Kilograms</item>
+        <item>Pounds</item>
         <item>Newtons</item>
     </string-array>
 
     <string-array name="mol_types">
         <item>Choose:</item>
-        <item>moles</item>
-        <item>molecules</item>
-        <item>molar</item>
-        <item>kg</item>
+        <item>Moles</item>
+        <item>Molecules</item>
+        <item>Molar</item>
+        <item>Kilograms</item>
     </string-array>
 </resources>

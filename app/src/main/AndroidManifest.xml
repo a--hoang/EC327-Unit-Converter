@@ -26,6 +26,7 @@
         <activity android:name=".CookingMarta_solid"></activity>
         <activity android:name=".MathCynthia_angle"></activity>
         <activity android:name=".MathCynthia_area"></activity>
+        <activity android:name=".MathCynthia_length"></activity>
         <activity android:name=".MathCynthia_volume"></activity>
         <activity android:name=".PhysicsMassForce"></activity>
         <activity android:name=".PhysicsMol"></activity>

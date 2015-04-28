@@ -6,13 +6,13 @@ package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.text.TextUtils;
 import android.widget.Toast;
 
 public class MathCynthia_length extends Activity {
@@ -21,9 +21,9 @@ public class MathCynthia_length extends Activity {
     private Spinner output_unit;
     private Button convertbutton;
     private EditText input_value;
-    private String [] input_unit_options;
-    private String [] output_unit_options;
     private TextView output_value;
+    private String[] input_unit_options;
+    private String [] output_unit_options;
     private int ui;
     private int uf;
     private Button switchButton;
@@ -74,24 +74,29 @@ public class MathCynthia_length extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double initialvalue = 0;
-                double finalvalue;
-                double inter;
+                double initialvalue;
+                double finalvalue = 0;
+                double inter = 0;
                 //1 = deg, 2 = rad
-                if (TextUtils.isEmpty(input_value.getText())) {
-                    Toast.makeText(getApplicationContext(), "Please input a value", Toast.LENGTH_SHORT).show();
+//
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     initialvalue = Double.parseDouble(input_value.getText().toString());
                 }
+
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
                     Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+
                 if (ui == 1){
-                    inter = initialvalue*(10^6);
+                    inter = initialvalue*Math.pow(10,6);
                 } else if (ui == 2) {
                     inter = initialvalue*1000;
                 } else if (ui == 3) {
@@ -101,35 +106,35 @@ public class MathCynthia_length extends Activity {
                 } else if (ui == 5) {
                     inter = initialvalue;
                 } else if (ui == 6) {
-                    inter = initialvalue/10;
+                    inter = initialvalue/10.0;
                 } else if (ui == 7) {
                     inter = initialvalue/100;
                 } else if (ui == 8) {
                     inter = initialvalue/1000;
                 } else if (ui == 9) {
-                    inter = initialvalue/(10^6);
+                    inter = initialvalue/(Math.pow(10,6));
                 } else if (ui == 10) {
-                    inter = initialvalue/(10^9);
+                    inter = initialvalue/(Math.pow(10,9));
                 } else if (ui == 11) {
-                    inter = initialvalue/(10^12);
+                    inter = initialvalue/(Math.pow(10,12));
                 } else if (ui == 12) {
                     inter = initialvalue/39.3701;
                 } else if (ui == 13) {
                     inter = initialvalue/3.2808;
                 } else if (ui == 14) {
                     inter = initialvalue/1.0936;
-                } else {
+                } else if (ui == 15) {
                     inter = initialvalue*1609;
                 }
 
                 if (uf == 1){
-                    finalvalue = inter/(10^6);
+                    finalvalue = inter/(Math.pow(10,6));
                 } else if (uf == 2) {
-                    finalvalue = inter/1000;
+                    finalvalue = inter/1000.0;
                 } else if (uf == 3) {
-                    finalvalue = inter/100;
+                    finalvalue = inter/100.0;
                 } else if (uf == 4) {
-                    finalvalue = inter/10;
+                    finalvalue = inter/10.0;
                 } else if (uf == 5) {
                     finalvalue = inter;
                 } else if (uf == 6) {
@@ -139,22 +144,23 @@ public class MathCynthia_length extends Activity {
                 } else if (uf == 8) {
                     finalvalue = inter*1000;
                 } else if (uf == 9) {
-                    finalvalue = inter*(10^6);
+                    finalvalue = inter*(Math.pow(10,6));
                 } else if (uf == 10) {
-                    finalvalue = inter*(10^9);
+                    finalvalue = inter*(Math.pow(10,9));
                 } else if (uf == 11) {
-                    finalvalue = inter*(10^12);
+                    finalvalue = inter*(Math.pow(10,12));
                 } else if (uf == 12) {
                     finalvalue = inter*39.3701;
                 } else if (uf == 13) {
                     finalvalue = inter*3.2808;
                 } else if (uf == 14) {
                     finalvalue = inter*1.0936;
-                } else {
-                    finalvalue = inter/1609;
+                } else if (uf == 15) {
+                    finalvalue = inter/1609.0;
                 }
 
-                output_value.setText(""+finalvalue);
+                String convertOutput = Double.toString(finalvalue);
+                output_value.setText(convertOutput);
             }
         });
 
