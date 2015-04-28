@@ -62,7 +62,9 @@
             android:layout_below="@+id/atomic_mass"
             android:layout_toStartOf="@+id/imageButton3"
             android:layout_alignRight="@+id/placeHold"
-            android:layout_alignEnd="@+id/placeHold" />
+            android:layout_alignEnd="@+id/placeHold"
+            android:background="@color/blue2"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +119,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton"
             android:layout_alignBottom="@+id/imageButton"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:background="@color/blue2"
+            android:textColor="@color/white"/>
 
         <EditText
             android:layout_width="wrap_content"

@@ -5,4 +5,16 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+
+
+
+
+
+
+    <color name="blue1">#9FBCFF</color>
+    <color name="blue2">#384DB8</color>
+
+
 </resources>

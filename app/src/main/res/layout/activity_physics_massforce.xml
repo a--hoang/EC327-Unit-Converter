@@ -52,7 +52,9 @@
             android:id="@+id/imageButton"
             android:layout_below="@+id/planets_spinner"
             android:layout_alignRight="@+id/finalAmount_text"
-            android:layout_alignEnd="@+id/finalAmount_text" />
+            android:layout_alignEnd="@+id/finalAmount_text"
+            android:background="@color/blue2"
+            android:textColor="@color/white"/>
 
         <Spinner
             android:id="@+id/planets2_spinner"
@@ -71,7 +73,9 @@
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton"
             android:layout_alignBottom="@+id/imageButton"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:background="@color/blue2"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
