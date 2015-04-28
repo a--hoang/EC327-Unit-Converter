@@ -55,8 +55,18 @@ public class ComputerBits extends Activity {
             @Override
             public void onClick(View v) {
 
+                if (TextUtils.isEmpty(Input_val.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 ui = input_unit.getSelectedItem().toString();
                 uf = output_unit.getSelectedItem().toString();
+                if (ui.equals("Choose") || uf.equals("Choose")) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
 
                 //bits
                 if (ui.equals( "Bits"))

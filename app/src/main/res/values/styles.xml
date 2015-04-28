@@ -10,11 +10,18 @@
 
 
 
-
-
-
     <color name="blue1">#9FBCFF</color>
     <color name="blue2">#384DB8</color>
+
+    <color name="red1">#F35C7F</color>
+    <color name="red2">#E51344</color>
+
+    <color name="green1">#A6F33C</color>
+    <color name="green2">#1DD600</color>
+
+    <color name="orange1">#FFA049</color>
+    <color name="orange2">#FF7400</color>
+
 
 
 </resources>

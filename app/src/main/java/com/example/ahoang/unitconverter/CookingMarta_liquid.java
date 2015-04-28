@@ -2,11 +2,15 @@ package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Scanner;
 
 
@@ -17,82 +21,13 @@ public class CookingMarta_liquid extends Activity {
     private Spinner output_unit;
     private Button convertbutton;
     private EditText input_value;
+    private TextView output_value;
     private String [] input_unit_options;
     private String [] output_unit_options;
     private int ui, uf;
     private Button switchButton;
+    private TextView numTextView;
 
-    public static double toMl (double input, int unitinput) {
-        double mliter = 0;
-        //1 = ounces // 2 = tbsp // 3 = cups // 4 = pint // 5 = quart // 6 = gallon // 7 = liters
-        if (unitinput==1) {
-            mliter = 30*input;
-        } else if (unitinput==2) {
-            mliter = 15*input;
-        } else if (unitinput==3) {
-            mliter = 250*input;
-        } else if (unitinput==4) {
-            mliter = 500*input;
-        } else if (unitinput==5) {
-            mliter = 1000 * input;
-        } else if (unitinput ==6) {
-            mliter = 4000 * input;
-        } else if (unitinput == 7){
-            mliter = 1000 * input;
-        }
-
-
-        return mliter;
-    }
-
-    public static double convertLiquid() {
-        int unitinput, finalunit;
-        double inputvalue, inputtoml, outputvalue;
-
-        //get initial unit
-        do {
-            System.out.println("Initial liquid unit: ounces (1), tablespoon (2), cup (3), pint (4), quart (5), gallon (6), liters (7), or milliliters (8)");
-            unitinput = in.nextInt();
-            if (unitinput < 1 || unitinput > 8) {
-                System.out.println("Invalid input. Try again.");
-            }
-        } while (unitinput < 1 || unitinput > 8);
-
-        //convert to ml
-        System.out.println("Initial liquid value: ");
-        inputvalue = in.nextDouble();
-        inputtoml = toMl(inputvalue, unitinput);
-
-        //get final unit
-        do {
-            System.out.println("Choose final unit: ounces (1), tablespoon (2), cup (3), pint (4), quart (5), gallon (6), liters (7), or milliliters (8)");
-            finalunit = in.nextInt();
-            if (finalunit < 1 || finalunit > 8)
-                System.out.println("Invalid unit. Try again.");
-        } while (finalunit < 1 || finalunit > 8);
-
-        //convert ml to other unit
-        if (finalunit==1) {
-            outputvalue = inputtoml/30;
-        } else if (finalunit==2) {
-            outputvalue = inputtoml/15;
-        } else if ( finalunit==3) {
-            outputvalue = inputtoml/250;
-        } else if (finalunit==4) {
-            outputvalue = inputtoml/500;
-        } else if (finalunit == 5){
-            outputvalue = inputtoml/1000;
-        } else if (finalunit == 6) {
-            outputvalue = inputtoml/4000;
-        } else if (finalunit ==7 ) {
-            outputvalue = inputtoml/1000;
-        } else {
-            outputvalue = inputvalue;
-        }
-        System.out.println("Final value is " + outputvalue);
-        return outputvalue;
-
-    }
 
 
     @Override
@@ -116,14 +51,93 @@ public class CookingMarta_liquid extends Activity {
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
 
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
+
+        output_value = (TextView) findViewById(R.id.finalAmount_text);
+
         convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
+                double mid = 0;
+                double initialValue;
+                double finalValue = 0;
 
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    initialValue = Double.parseDouble(input_value.getText().toString());
+                }
 
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //convert to intermediate ml
+
+                //1 = ounces // 2 = tbsp // 3 = cups // 4 = pint // 5 = quart // 6 = gallon // 7 = milliters // 8 = liter
+                if (ui==1) {
+                    mid = 30.0*initialValue;
+                } else if (ui==2) {
+                    mid = 15.0*initialValue;
+                } else if (ui==3) {
+                    mid = 250.0*initialValue;
+                } else if (ui==4) {
+                    mid = 500.0*initialValue;
+                } else if (ui==5) {
+                    mid = 1000.0 * initialValue;
+                } else if (ui ==6) {
+                    mid = 4000.0 * initialValue;
+                }else if (ui == 7){
+                    mid =  initialValue;
+                } else if (ui == 8){
+                    mid = 1000.0 * initialValue;
+                }
+
+                //convert ml to other unit
+                if (uf==1) {
+                    finalValue = mid/30.0;
+                } else if (uf==2) {
+                    finalValue  = mid/15.0;
+                } else if (uf==3) {
+                    finalValue = mid/250.0;
+                } else if (uf==4) {
+                    finalValue  = mid/500.0;
+                } else if (uf== 5){
+                    finalValue  = mid/1000.0;
+                } else if (uf == 6) {
+                    finalValue  = mid/4000.0;
+                } else if (uf==7 ) {
+                    finalValue  = mid;
+                }else if (uf==8 ) {
+                    finalValue  = mid/1000.0;
+                }
+
+                //double finalValue = convertTemp(initialValue, ui, uf);
+                String convertOutput = Double.toString(finalValue);
+                output_value.setText(convertOutput);
             }
+
         });
 
         switchButton = (Button) findViewById(R.id.switchbutton);

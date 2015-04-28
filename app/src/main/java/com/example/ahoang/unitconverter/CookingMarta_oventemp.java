@@ -1,12 +1,17 @@
+
 package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Scanner;
 
 public class CookingMarta_oventemp extends Activity {
@@ -20,34 +25,8 @@ public class CookingMarta_oventemp extends Activity {
     private String [] output_unit_options;
     private int ui, uf;
     private Button switchButton;
-
-    public static double convertOven() {
-        int unitinput;
-        double inputvalue;
-        double outputvalue=0;
-
-        //get initial unit
-        do {
-            System.out.println("Initial temperature unit: celsius (1) or fahrenheit ");
-            unitinput = in.nextInt();
-            if (unitinput < 1 || unitinput > 2) {
-                System.out.println("Invalid input. Try again.");
-            }
-        } while (unitinput < 1 || unitinput > 2);
-
-        System.out.println("Initial temperature value: ");
-        inputvalue = in.nextDouble();
-
-        //Conversor
-        if (unitinput ==1){
-            outputvalue =  inputvalue  * 9/5 + 32;
-        }
-        else if (unitinput ==2) {
-            outputvalue = ( inputvalue - 32) / (9/5);
-        }
-        System.out.println("Final value is " + outputvalue);
-        return outputvalue;
-    }
+    private TextView numTextView;
+    private TextView output_value;
 
 
 
@@ -72,14 +51,72 @@ public class CookingMarta_oventemp extends Activity {
         dataAdapter_out.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // NEED ERROR CHECK
 
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
+
+        output_value = (TextView) findViewById(R.id.finalAmount_text);
+
         convertbutton = (Button) findViewById(R.id.imageButton);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v){
+                double mid = 0;
+                double initialValue;
+                double finalValue = 0;
+
+                //if text box is empty, do nothing
+                if (TextUtils.isEmpty(input_value.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    initialValue = Double.parseDouble(input_value.getText().toString());
+                }
+
+                ui = input_unit.getSelectedItemPosition();
+                uf = output_unit.getSelectedItemPosition();
+                if (ui == 0 || uf == 0) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //convert to intermediate far
+
+                //1 = far// 2 = celsius
+                if (ui==1) {
+                    mid = initialValue;
+                } else if (ui==2) {
+                    mid =initialValue  * 9/5 + 32;
+                }
 
 
+
+                //Conversor
+                if (uf ==1){
+                    finalValue  = mid;
+                }
+                else if (uf ==2) {
+                    finalValue = (mid - 32) * 5/9;
+                }
+
+                //double finalValue = convertTemp(initialValue, ui, uf);
+                String convertOutput = Double.toString(finalValue);
+                output_value.setText(convertOutput);
             }
+
         });
 
         switchButton = (Button) findViewById(R.id.switchbutton);

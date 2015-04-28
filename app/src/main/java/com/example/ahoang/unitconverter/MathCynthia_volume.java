@@ -71,7 +71,7 @@ public class MathCynthia_volume extends Activity{
                 ui = input_unit.getSelectedItemPosition();
                 uf = output_unit.getSelectedItemPosition();
                 if (ui == 0 || uf == 0) {
-                    Toast.makeText(getApplicationContext(), "Please choose a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

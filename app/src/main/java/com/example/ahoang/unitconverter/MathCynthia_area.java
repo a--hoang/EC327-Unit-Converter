@@ -62,7 +62,7 @@ public class MathCynthia_area extends Activity{
                 double inter;
 
                 if (TextUtils.isEmpty(input_value.getText())) {
-                    Toast.makeText(getApplicationContext(), "Please input a value", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     initialvalue = Double.parseDouble(input_value.getText().toString());

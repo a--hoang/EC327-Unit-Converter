@@ -9,7 +9,8 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-        android:id="@+id/x">
+        android:id="@+id/x"
+        android:background="@color/black">
 
         <TextView
             android:layout_width="fill_parent"
@@ -23,13 +24,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignLeft="@+id/textView"
-            android:layout_alignStart="@+id/textView" />
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            />
 
 
         <EditText
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:inputType="numberDecimal"
             android:ems="10"
             android:id="@+id/editText"
@@ -38,20 +40,22 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:hint="Enter Value"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"
             android:layout_alignBottom="@+id/planets_spinner" />
+
+
 
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/title"
             android:layout_toRightOf="@+id/editText"
-            android:layout_toEndOf="@+id/editText" />
-
-        <Space
-            android:layout_width="20px"
-            android:layout_height="20px"
-            android:id="@+id/space4" />
+            android:layout_toEndOf="@+id/editText"
+            android:layout_below="@+id/title"
+            android:layout_marginBottom="10dp"
+            android:background="@color/blue1" />
 
 
         <Button
@@ -64,7 +68,8 @@
             android:layout_alignRight="@+id/placeHold"
             android:layout_alignEnd="@+id/placeHold"
             android:background="@color/blue2"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -78,7 +83,10 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:hint="Final Amount"
-            android:paddingTop="20dp" />
+            android:paddingTop="20dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginRight="5dp"/>
 
         <EditText
             android:layout_width="wrap_content"
@@ -93,7 +101,11 @@
             android:gravity="center_horizontal|bottom"
             android:paddingTop="25dp"
             android:layout_toLeftOf="@+id/placeHold"
-            android:layout_toStartOf="@+id/placeHold" />
+            android:layout_toStartOf="@+id/placeHold"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <View android:id="@+id/placeHold"
         android:layout_width="0dp"
@@ -105,9 +117,12 @@
             android:id="@+id/planets2_spinner"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/finalAmount_text"
-            android:layout_below="@+id/switchbutton"
-            android:layout_toRightOf="@+id/finalAmount_text" />
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:background="@color/blue1"
+            android:layout_below="@+id/imageButton"
+            android:layout_toRightOf="@+id/finalAmount_text"
+            android:layout_toEndOf="@+id/finalAmount_text" />
 
 
         <Button
@@ -118,10 +133,10 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton"
-            android:layout_alignBottom="@+id/imageButton"
             android:layout_centerHorizontal="true"
             android:background="@color/blue2"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_alignBottom="@+id/imageButton" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -135,7 +150,9 @@
             android:layout_alignEnd="@+id/switchbutton"
             android:hint="Volume (L)"
             android:gravity="center_horizontal|bottom"
-            android:paddingTop="25dp" />
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -148,7 +165,8 @@
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/numTitle"
             android:layout_alignRight="@+id/numTitle"
-            android:layout_alignEnd="@+id/numTitle" />
+            android:layout_alignEnd="@+id/numTitle"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="fill_parent"
@@ -160,7 +178,8 @@
             android:layout_below="@+id/planets2_spinner"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:paddingTop="20dp" />
+            android:paddingTop="20dp"
+            android:textColor="@color/white"/>
 
 
 

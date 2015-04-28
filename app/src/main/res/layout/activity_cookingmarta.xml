@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-    android:id="@+id/x">
+    android:id="@+id/x"
+    android:background="@color/black">
 
 
     <TextView
@@ -18,7 +19,8 @@
         android:visibility="visible"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/white"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -38,7 +40,9 @@
             android:id="@+id/button1"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
-            android:onClick="convertTemp" />
+            android:onClick="convertTemp"
+            android:textColor="@color/white"
+            android:background="@color/orange2"/>
 
         <View
             android:layout_width="0dp"
@@ -51,7 +55,9 @@
             android:id="@+id/button2"
             android:layout_gravity="center_horizontal"
             android:textStyle="bold"
-            android:onClick="convertPressure" />
+            android:onClick="convertPressure"
+            android:textColor="@color/white"
+            android:background="@color/orange2"/>
 
         <View
             android:layout_width="0dp"
@@ -64,7 +70,9 @@
             android:text="Temperatures"
             android:id="@+id/button3"
             android:textStyle="bold"
-            android:onClick="convertMol" />
+            android:onClick="convertMol"
+            android:textColor="@color/white"
+            android:background="@color/orange2"/>
     </LinearLayout>
 
     <TextView
@@ -75,7 +83,8 @@
         android:text="@string/number_fact"
         android:gravity="center_horizontal"
         android:layout_below="@+id/linearLayout5"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"/>
 
     <TextView
         android:layout_width="fill_parent"
@@ -87,6 +96,7 @@
         android:paddingTop="10dp"
         android:layout_below="@+id/numTitle"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

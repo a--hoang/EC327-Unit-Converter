@@ -56,12 +56,17 @@ public class ComputerNumbers extends Activity {
             public void onClick(View v) {
                 double initialValue;
 
-                ui = input_unit.getSelectedItem().toString();
-                uf = output_unit.getSelectedItem().toString();
 
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                ui = input_unit.getSelectedItem().toString();
+                uf = output_unit.getSelectedItem().toString();
+                if (ui.equals("Choose") || uf.equals("Choose")) {
+                    Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
