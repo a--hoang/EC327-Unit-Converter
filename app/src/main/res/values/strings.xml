@@ -81,13 +81,18 @@
         <item>Kilometers</item>
     </string-array>
 
-    <string-array name="comp_list">
+    <string-array name="bits_types">
+        <item>Choose:</item>
         <item>Bits</item>
         <item>Bytes</item>
         <item>KiloBits</item>
         <item>KiloBytes</item>
         <item>MegaBits</item>
         <item>MegaBytes</item>
+    </string-array>
+
+    <string-array name="number_types">
+        <item>Choose:</item>
         <item>Decimal</item>
         <item>Binary</item>
         <item>Hexadecimal</item>

@@ -18,6 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ComputerJP"></activity>
+        <activity android:name=".ComputerBits"></activity>
+        <activity android:name=".ComputerNumbers"></activity>
         <activity android:name=".CookingMarta"></activity>
         <activity android:name=".MathCynthia"></activity>
         <activity android:name=".PhysicsCindy"></activity>

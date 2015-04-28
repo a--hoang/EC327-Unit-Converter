@@ -31,6 +31,7 @@ public class PhysicsMassForce extends Activity {
     private int ui;
     private int uf;
     private Button switchButton;
+    TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,21 @@ public class PhysicsMassForce extends Activity {
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
