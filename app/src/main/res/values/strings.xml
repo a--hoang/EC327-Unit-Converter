@@ -4,12 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <color name="blue">#33B5E5</color>
-    <color name="darkBlue">#0099CC</color>
-    <color name="darkOrange">#FF8800</color>
-    <color name="orange">#FFBB33</color>
-    <color name="grey">#7e7e7e</color>
-
     <string name="number_fact">"Random Number Factoid:"</string>
     <string name="number_api">"Random Number Fact Here:"</string>
 

@@ -26,6 +26,8 @@ public class DownloadTask extends AsyncTask<String, Long, String> {
                 };
             }
             response = response.substring(12, i-1);
+            byte[] b = response.getBytes("UTF-8");
+            response = new String(b, "UTF-8");
             System.out.println(response);
             return response;
 
