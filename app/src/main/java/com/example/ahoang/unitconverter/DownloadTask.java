@@ -16,9 +16,19 @@ public class DownloadTask extends AsyncTask<String, Long, String> {
 //                publishProgress(file.length());
 //            }
 //            return file;
-            String response = HttpRequest.get("http://numbersapi.com/random").body();
+//            String response = HttpRequest.get("http://numbersapi.com/random").body();
+            //CATFACTS REPLACEMENT API/PARSING
+            String response = HttpRequest.get("http://catfacts-api.appspot.com/api/facts").body();
+            int i;
+            for(i = 0; i < response.length(); i++){
+                if(response.charAt(i) == ']'){
+                    break;
+                };
+            }
+            response = response.substring(12, i-1);
             System.out.println(response);
             return response;
+
         } catch (Exception e) {
             System.out.println("Error: call did not work.");
             return null;
