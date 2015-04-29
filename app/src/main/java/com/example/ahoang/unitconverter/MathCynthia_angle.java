@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 
 public class MathCynthia_angle extends Activity {
 
@@ -25,6 +27,7 @@ public class MathCynthia_angle extends Activity {
     private int ui;
     private int uf;
     private Button switchButton;
+    private TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,20 @@ public class MathCynthia_angle extends Activity {
         output_value=(TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +97,10 @@ public class MathCynthia_angle extends Activity {
                 } else {
                     finalvalue = (Math.PI / 180) * inter;
                 }
-                output_value.setText(""+finalvalue);
+
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalvalue));
+                //output_value.setText(""+finalvalue);
             }
         });
 

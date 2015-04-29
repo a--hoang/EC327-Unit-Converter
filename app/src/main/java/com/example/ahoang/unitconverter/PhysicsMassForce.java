@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
@@ -58,19 +59,19 @@ public class PhysicsMassForce extends Activity {
         convertbutton = (Button) findViewById(R.id.imageButton);
 
         //Populate random fact box
-        numTextView = (TextView)findViewById(R.id.numberText);
-        //set api string
-        String temp;
-        try {
-            do {
-                temp = new DownloadTask().execute().get();
-            }while (temp.length() > 100);
-        }
-        catch(Exception e){
-            temp = "Error, connection refused.";
-            System.out.println("Error, connection refused.");
-        }
-        numTextView.setText(temp);
+//        numTextView = (TextView)findViewById(R.id.numberText);
+//        //set api string
+//        String temp;
+//        try {
+//            do {
+//                temp = new DownloadTask().execute().get();
+//            }while (temp.length() > 100);
+//        }
+//        catch(Exception e){
+//            temp = "Error, connection refused.";
+//            System.out.println("Error, connection refused.");
+//        }
+//        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,8 +113,8 @@ public class PhysicsMassForce extends Activity {
                     finalValue = mid * 9.80665;
                 }
 
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
 
             }
         });

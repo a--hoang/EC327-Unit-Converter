@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 /**
@@ -105,8 +106,8 @@ public class PhysicsTime extends Activity {
                     finalValue = mid / 7 / 24 / 60 / 60;
                 }
 
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
 
             }
 

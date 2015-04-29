@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MathCynthia_area extends Activity{
 
     private Spinner input_unit;
@@ -27,6 +29,7 @@ public class MathCynthia_area extends Activity{
     private Button switchButton;
     private int ui;
     private int uf;
+    private TextView numTextView;
 
     //1 = inch, 2 = foot, 3 = yard, 4 = mile, 5 = mm, 6 = cm, 7 = m, 8 = km
     @Override
@@ -53,6 +56,20 @@ public class MathCynthia_area extends Activity{
         output_value=(TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 100);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +127,9 @@ public class MathCynthia_area extends Activity{
                     finalvalue = Math.pow((inter/1000),2);
                 }
 
-                output_value.setText(""+finalvalue);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalvalue));
+                //output_value.setText(""+finalvalue);
             }
         });
 

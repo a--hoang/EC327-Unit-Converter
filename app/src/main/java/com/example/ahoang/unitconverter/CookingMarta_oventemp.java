@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class CookingMarta_oventemp extends Activity {
@@ -113,8 +114,8 @@ public class CookingMarta_oventemp extends Activity {
                 }
 
                 //double finalValue = convertTemp(initialValue, ui, uf);
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
             }
 
         });

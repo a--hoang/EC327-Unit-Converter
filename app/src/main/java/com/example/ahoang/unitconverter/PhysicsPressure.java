@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by Cindy on 4/22/2015.
  */
@@ -111,9 +113,9 @@ public class PhysicsPressure extends Activity {
                 } else if (uf == 4) {
                     finalValue = mid / 0.7355591;
                 }
-                //double finalValue = convertTemp(initialValue, ui, uf);
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
             }
 
         });

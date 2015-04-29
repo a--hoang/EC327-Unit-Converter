@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+
 public class MathCynthia_length extends Activity {
 
     private Spinner input_unit;
@@ -70,6 +72,8 @@ public class MathCynthia_length extends Activity {
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
+
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,8 +163,8 @@ public class MathCynthia_length extends Activity {
                     finalvalue = inter/1609.0;
                 }
 
-                String convertOutput = Double.toString(finalvalue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalvalue));
             }
         });
 

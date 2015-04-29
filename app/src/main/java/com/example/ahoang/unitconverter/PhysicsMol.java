@@ -2,6 +2,7 @@ package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
@@ -36,6 +37,7 @@ public class PhysicsMol extends Activity {
     private int ui;
     private int uf;
     private Button switchButton;
+
 
     static final double NA = 6.0221415*Math.pow(10,23);
 
@@ -90,7 +92,7 @@ public class PhysicsMol extends Activity {
 
                 if (ui == 3 || uf == 3) {
                     if (TextUtils.isEmpty((extraInputL.getText().toString()))) {
-                        Toast.makeText(getApplicationContext(), "Missing: volume in liters", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Missing: atomic mass in kg", Toast.LENGTH_SHORT).show();
                         return;
                     } else {
                         extraL = Double.parseDouble(extraInputL.getText().toString());
@@ -128,8 +130,8 @@ public class PhysicsMol extends Activity {
                     finalValue = mid * extraAM;
                 }
 
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
             }
 
         });

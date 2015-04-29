@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
@@ -71,6 +72,7 @@ public class CookingMarta_solid extends Activity {
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,8 +133,8 @@ public class CookingMarta_solid extends Activity {
                 }
 
                 //double finalValue = convertTemp(initialValue, ui, uf);
-                String convertOutput = Double.toString(finalValue);
-                output_value.setText(convertOutput);
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
             }
 
         });
