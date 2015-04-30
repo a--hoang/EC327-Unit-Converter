@@ -113,7 +113,8 @@ public class Home extends ActionBarActivity implements View.OnClickListener, Vie
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            //launch about page HERE
             return true;
         }
 

@@ -2,9 +2,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <item
-        android:id="@+id/action_refresh"
+        android:id="@+id/action_about"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="Refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </menu>
