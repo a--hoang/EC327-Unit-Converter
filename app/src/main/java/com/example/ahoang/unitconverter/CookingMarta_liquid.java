@@ -135,13 +135,8 @@ public class CookingMarta_liquid extends Activity {
                 }
 
                 //double finalValue = convertTemp(initialValue, ui, uf);
-                if (finalValue >= Math.pow(10, 6) || finalValue <= Math.pow(10,-6)) {
-                    DecimalFormat df = new DecimalFormat("###0.####E0");
-                    output_value.setText(df.format(finalValue));
-                } else {
-                    DecimalFormat df = new DecimalFormat("0.00000");
-                    output_value.setText(df.format(finalValue));
-                }
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalValue));
             }
 
         });

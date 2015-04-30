@@ -98,13 +98,9 @@ public class MathCynthia_angle extends Activity {
                     finalvalue = (Math.PI / 180) * inter;
                 }
 
-                if (finalvalue >= Math.pow(10, 6) || finalvalue <= Math.pow(10,-6)) {
-                    DecimalFormat df = new DecimalFormat("###0.####E0");
-                    output_value.setText(df.format(finalvalue));
-                } else {
-                    DecimalFormat df = new DecimalFormat("0.00000");
-                    output_value.setText(df.format(finalvalue));
-                }
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalvalue));
+                //output_value.setText(""+finalvalue);
             }
         });
 

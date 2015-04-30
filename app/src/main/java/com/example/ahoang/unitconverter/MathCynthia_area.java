@@ -127,13 +127,9 @@ public class MathCynthia_area extends Activity{
                     finalvalue = Math.pow((inter/1000),2);
                 }
 
-                if (finalvalue >= Math.pow(10, 6) || finalvalue <= Math.pow(10,-6)) {
-                    DecimalFormat df = new DecimalFormat("###0.####E0");
-                    output_value.setText(df.format(finalvalue));
-                } else {
-                    DecimalFormat df = new DecimalFormat("0.00000");
-                    output_value.setText(df.format(finalvalue));
-                }
+                DecimalFormat df = new DecimalFormat("0.00000");
+                output_value.setText(df.format(finalvalue));
+                //output_value.setText(""+finalvalue);
             }
         });
 
