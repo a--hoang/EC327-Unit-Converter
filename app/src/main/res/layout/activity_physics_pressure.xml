@@ -76,7 +76,7 @@
         <Spinner
             android:id="@+id/planets2_spinner"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:layout_below="@+id/imageButton"
             android:layout_toRightOf="@+id/finalAmount_text"
             android:layout_alignParentRight="true"
@@ -85,7 +85,7 @@
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:text="Switch"
             android:id="@+id/switchbutton"
             android:paddingTop="10dp"
@@ -111,7 +111,8 @@
             android:hint="Final Amount"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:layout_marginRight="5dp"/>
+            android:layout_marginRight="5dp"
+            android:layout_above="@+id/numTitle" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -137,8 +138,8 @@
             android:layout_below="@+id/planets2_spinner"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:paddingTop="20dp"
             android:textColor="@color/white"
+            android:paddingTop="20dp"
             />
 
 

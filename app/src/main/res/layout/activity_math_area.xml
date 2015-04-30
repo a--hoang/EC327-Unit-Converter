@@ -95,8 +95,7 @@
             android:layout_below="@+id/planets_spinner"
             android:textColor="@color/white"
             android:background="@color/green2"
-            android:layout_marginBottom="10dp"
-            />
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -106,16 +106,22 @@ public class PhysicsPressure extends Activity {
                 //convert to final value
                 if (uf == 1) {
                     finalValue = mid;
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalValue));
                 } else if (uf == 2) {
                     finalValue = mid / 0.0075006;
+                    DecimalFormat df = new DecimalFormat("###0.####E0");
+                    output_value.setText(df.format(finalValue));
                 } else if (uf == 3) {
                     finalValue = mid / 759.9999520;
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalValue));
                 } else if (uf == 4) {
                     finalValue = mid / 0.7355591;
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalValue));
                 }
 
-                DecimalFormat df = new DecimalFormat("0.00000");
-                output_value.setText(df.format(finalValue));
             }
 
         });
