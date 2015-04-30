@@ -10,6 +10,7 @@
     <string name="Cooking_Units_Title">CookingMarta</string>
 
     <string-array name="input_unit_solid">
+    <item>Choose:</item>
     <item>Ounces</item>
     <item>Tablespoons</item>
     <item>Teaspoons</item>
@@ -20,6 +21,7 @@
     </string-array>
 
     <string-array name="input_unit_liquid">
+    <item>Choose:</item>
     <item>Ounces</item>
     <item>Tablespoons</item>
     <item>Cups</item>
@@ -31,6 +33,7 @@
     </string-array>
 
     <string-array name="input_unit_oventemp">
+        <item>Choose:</item>
         <item>Fahrenheit</item>
         <item>Celsius</item>
     </string-array>
