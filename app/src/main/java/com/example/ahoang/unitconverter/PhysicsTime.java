@@ -56,21 +56,6 @@ public class PhysicsTime extends Activity {
 
         convertbutton = (Button) findViewById(R.id.imageButton);
 
-        //Populate random fact box
-        numTextView = (TextView)findViewById(R.id.numberText);
-        //set api string
-        String temp;
-        try {
-            do {
-                temp = new DownloadTask().execute().get();
-            }while (temp.length() > 80);
-        }
-        catch(Exception e){
-            temp = "Error, connection refused.";
-            System.out.println("Error, connection refused.");
-        }
-        numTextView.setText(temp);
-
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +128,20 @@ public class PhysicsTime extends Activity {
             }
         });
 
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 80);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
     }
 
 }
