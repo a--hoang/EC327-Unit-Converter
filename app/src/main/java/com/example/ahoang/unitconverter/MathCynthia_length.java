@@ -163,8 +163,13 @@ public class MathCynthia_length extends Activity {
                     finalvalue = inter/1609.0;
                 }
 
-                DecimalFormat df = new DecimalFormat("0.00000");
-                output_value.setText(df.format(finalvalue));
+                if (finalvalue >= Math.pow(10, 6) || finalvalue <= Math.pow(10,-6)) {
+                    DecimalFormat df = new DecimalFormat("###0.####E0");
+                    output_value.setText(df.format(finalvalue));
+                } else {
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalvalue));
+                }
             }
         });
 

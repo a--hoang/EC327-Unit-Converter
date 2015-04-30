@@ -28,15 +28,6 @@
             android:textColor="@color/white"
             android:layout_marginBottom="10dp"
             />
-    </RelativeLayout>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-        android:background="@color/black">
 
         <EditText
             android:layout_width="wrap_content"
@@ -47,79 +38,74 @@
             android:gravity="center_horizontal|bottom"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_below="@+id/title"
             android:hint="Enter Value"
-            android:textColorHint="@color/white"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:layout_marginRight="5dp"
             android:layout_alignBottom="@+id/planets_spinner" />
 
         <Spinner
             android:id="@+id/planets_spinner"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/editText"
-            android:layout_toEndOf="@+id/editText"
-            android:layout_marginBottom="10dp"
-            android:background="@color/blue1" />
-    </RelativeLayout>
-
-
-    <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-        android:background="@color/black">
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:ems="10"
-            android:id="@+id/atomic_mass"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:hint="Atomic Mass (kg)"
-            android:gravity="center_horizontal|bottom"
-            android:paddingTop="25dp"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_marginBottom="10dp"
-            android:layout_alignTop="@+id/liters" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/liters"
-            android:inputType="numberDecimal"
-            android:hint="Volume (L)"
-            android:gravity="center_horizontal|bottom"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/atomic_mass"
+            android:layout_height="64dp"
+            android:background="@color/blue1"
+            android:layout_below="@+id/title"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/editText"
+            android:layout_toRightOf="@+id/editText" />
 
     </RelativeLayout>
 
-    <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-        android:background="@color/black">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/liters"
+        android:inputType="numberDecimal"
+        android:hint="If using molarity, enter volume (L)"
+        android:gravity="center_horizontal|bottom"
+        android:paddingTop="25dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_below="@+id/linearLayout"
+        android:layout_toLeftOf="@+id/planets_spinner"
+        android:layout_toStartOf="@+id/planets_spinner" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/atomic_mass"
+        android:hint="If using mass, enter atomic mass (kg/mol)"
+        android:gravity="center_horizontal|bottom"
+        android:paddingTop="25dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_below="@+id/editText"
+        android:layout_toStartOf="@+id/planets_spinner"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <Button
-            android:layout_width="210dp"
-            android:layout_height="64dp"
+            android:layout_width="215dp"
+            android:layout_height="65dp"
             android:text="Convert"
             android:id="@+id/imageButton"
             android:background="@color/blue2"
             android:textColor="@color/white"
-            android:layout_marginBottom="10dp"/>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="5dp"
+            />
 
 
         <Button
@@ -130,52 +116,78 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/imageButton"
-            android:layout_centerHorizontal="true"
             android:background="@color/blue2"
             android:textColor="@color/white"
-            android:layout_alignBottom="@+id/imageButton" />
-
-    </RelativeLayout>
-
-
-
-<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="wrap_content" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Home"
-    android:background="@color/black">
-
-    <EditText
-        android:layout_width="210dp"
-        android:layout_height="64dp"
-        android:inputType="numberDecimal"
-        android:ems="10"
-        android:id="@+id/finalAmount_text"
-        android:gravity="center_horizontal|bottom"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:hint="Final Amount"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_marginRight="5dp"
-        android:layout_alignBottom="@+id/planets2_spinner" />
+            android:layout_gravity="right"
+            android:layout_above="@+id/planets2_spinner"
+            android:layout_marginBottom="10dp"/>
 
 
-
-
-    <Spinner
-            android:id="@+id/planets2_spinner"
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:gravity="center"
+            android:id="@+id/finalAmount_text"
+            android:layout_alignBottom="@+id/planets2_spinner"
+            android:layout_below="@+id/imageButton"
+            android:hint="Final Amount"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_above="@+id/numTitle"
+            android:layout_alignRight="@+id/imageButton"
+            android:layout_alignEnd="@+id/imageButton"
+            android:layout_alignLeft="@+id/imageButton"
+            android:layout_alignStart="@+id/imageButton"
+            android:layout_marginRight="5dp" />
+
+
+        <Spinner
+            android:id="@+id/planets2_spinner"
+            android:layout_width="140dp"
+            android:layout_height="64dp"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:background="@color/blue1"
-            android:layout_toEndOf="@+id/finalAmount_text" />
+            android:layout_gravity="right"
+            android:layout_below="@+id/imageButton"
+            android:layout_toRightOf="@+id/imageButton"
+            android:layout_toEndOf="@+id/imageButton" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="20dp"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/numTitle"
+            android:textSize="20sp"
+            android:text="@string/number_fact"
+            android:gravity="center_horizontal"
+            android:layout_below="@+id/planets2_spinner"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/number_api"
+            android:id="@+id/numberText"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:paddingTop="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/numTitle"
+            android:layout_alignRight="@+id/numTitle"
+            android:layout_alignEnd="@+id/numTitle"
+            android:textColor="@color/white"/>
+
 
     </RelativeLayout>
+
+
 
 
 
