@@ -44,17 +44,6 @@ public class Home extends ActionBarActivity implements View.OnClickListener, Vie
         buttonCindy.setOnTouchListener(this);
 
         numTextView = (TextView)findViewById(R.id.numberText);
-//        //set api string - removed due to API failure
-//        String temp;
-//        try {
-//            do {
-//                temp = new DownloadTask().execute().get();
-//            }while (temp.length() > 120);
-//        }
-//        catch(Exception e){
-//            temp = "Error, connection refused.";
-//            System.out.println("Error, connection refused.");
-//        }
 
         //catfacts
 
@@ -110,7 +99,6 @@ public class Home extends ActionBarActivity implements View.OnClickListener, Vie
         }
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_home, menu);
@@ -125,7 +113,8 @@ public class Home extends ActionBarActivity implements View.OnClickListener, Vie
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            //launch about page HERE
             return true;
         }
 
