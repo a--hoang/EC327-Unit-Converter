@@ -32,7 +32,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="64dp"
-            android:inputType="numberDecimal"
+            android:inputType="numberDecimal|numberSigned"
             android:ems="10"
             android:id="@+id/editText"
             android:gravity="center_horizontal|bottom"
