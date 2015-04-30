@@ -7,13 +7,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 /**
  * Created by Cindy on 4/22/2015.
@@ -31,6 +29,7 @@ public class PhysicsTime extends Activity {
     private int uf;
     private Button switchButton;
 
+    private TextView numTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +127,21 @@ public class PhysicsTime extends Activity {
                 output_unit.setSelection(ui);
             }
         });
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 80);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
     }
 
 }
