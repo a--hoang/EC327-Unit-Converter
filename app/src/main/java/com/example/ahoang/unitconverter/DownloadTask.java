@@ -26,6 +26,11 @@ public class DownloadTask extends AsyncTask<String, Long, String> {
                 };
             }
             response = response.substring(12, i-1);
+            for(int j = 0; j < response.length(); j++){
+                if(response.charAt(j) == '\\'){
+                    response = response.substring(0, j) + response.substring(j+1);
+                }
+            }
             byte[] b = response.getBytes("UTF-8");
             response = new String(b, "UTF-8");
             System.out.println(response);
@@ -36,15 +41,4 @@ public class DownloadTask extends AsyncTask<String, Long, String> {
             return null;
         }
     }
-
-//    protected void onProgressUpdate(Long... progress) {
-//        Log.d("MyApp", "Downloaded bytes: " + progress[0]);
-//    }
-
-//    protected void onPostExecute(File file) {
-//        if (file != null)
-//            Log.d("MyApp", "Downloaded file to: " + file.getAbsolutePath());
-//        else
-//            Log.d("MyApp", "Downloaded");
-//    }
 }
