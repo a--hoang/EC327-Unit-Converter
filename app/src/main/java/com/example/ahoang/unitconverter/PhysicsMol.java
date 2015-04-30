@@ -37,6 +37,7 @@ public class PhysicsMol extends Activity {
     private int ui;
     private int uf;
     private Button switchButton;
+    private TextView numTextView;
 
 
     static final double NA = 6.0221415*Math.pow(10,23);
@@ -65,6 +66,21 @@ public class PhysicsMol extends Activity {
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
+
+        //Populate random fact box
+        numTextView = (TextView)findViewById(R.id.numberText);
+        //set api string
+        String temp;
+        try {
+            do {
+                temp = new DownloadTask().execute().get();
+            }while (temp.length() > 90);
+        }
+        catch(Exception e){
+            temp = "Error, connection refused.";
+            System.out.println("Error, connection refused.");
+        }
+        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
