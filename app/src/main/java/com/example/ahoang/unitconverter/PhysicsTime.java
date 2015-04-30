@@ -97,17 +97,22 @@ public class PhysicsTime extends Activity {
                 if (uf == 1) {
                     finalValue = mid;
                 } else if (uf == 2) {
-                    finalValue = mid / 60;
+                    finalValue = mid / 60.0;
                 } else if (uf == 3) {
-                    finalValue = mid / 60 / 60;
+                    finalValue = mid / 60.0 / 60.0;
                 } else if (uf == 4) {
-                    finalValue = mid / 24 / 60 / 60;
+                    finalValue = mid / 24.0 / 60.0 / 60.0;
                 } else if (uf ==5 ) {
-                    finalValue = mid / 7 / 24 / 60 / 60;
+                    finalValue = mid / 7.0 / 24.0 / 60.0 / 60.0;
                 }
 
-                DecimalFormat df = new DecimalFormat("0.00000");
-                output_value.setText(df.format(finalValue));
+                if (finalValue >= Math.pow(10, 6) || finalValue <= Math.pow(10,-6)) {
+                    DecimalFormat df = new DecimalFormat("###0.####E0");
+                    output_value.setText(df.format(finalValue));
+                } else {
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalValue));
+                }
 
             }
 

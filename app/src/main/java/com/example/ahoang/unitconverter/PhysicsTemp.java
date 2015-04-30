@@ -91,14 +91,16 @@ public class PhysicsTemp extends Activity{
                 //convert to final value
                 if (uf == 1) {
                     finalValue = mid;
-                    DecimalFormat df = new DecimalFormat("0.00000");
-                    output_value.setText(df.format(finalValue));
                 } else if (uf == 2) {
                     finalValue = Math.round((mid + 273.150) * 100.0) / 100.0;
-                    String convertOutput = Double.toString(finalValue);
-                    output_value.setText(convertOutput);
                 } else  if (uf == 3) {
                     finalValue = mid * (9.0/5.0) + 32;
+                }
+
+                if (finalValue >= Math.pow(10, 6) || finalValue <= Math.pow(10,-6)) {
+                    DecimalFormat df = new DecimalFormat("###0.####E0");
+                    output_value.setText(df.format(finalValue));
+                } else {
                     DecimalFormat df = new DecimalFormat("0.00000");
                     output_value.setText(df.format(finalValue));
                 }

@@ -113,9 +113,13 @@ public class CookingMarta_oventemp extends Activity {
                     finalValue = (mid - 32) * 5/9;
                 }
 
-                //double finalValue = convertTemp(initialValue, ui, uf);
-                DecimalFormat df = new DecimalFormat("0.00000");
-                output_value.setText(df.format(finalValue));
+                if (finalValue >= Math.pow(10, 6) || finalValue <= Math.pow(10,-6)) {
+                    DecimalFormat df = new DecimalFormat("###0.####E0");
+                    output_value.setText(df.format(finalValue));
+                } else {
+                    DecimalFormat df = new DecimalFormat("0.00000");
+                    output_value.setText(df.format(finalValue));
+                }
             }
 
         });
