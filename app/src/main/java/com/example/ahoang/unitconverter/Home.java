@@ -111,12 +111,12 @@ public class Home extends ActionBarActivity implements View.OnClickListener, Vie
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_about) {
-            //launch about page HERE
-            return true;
-        }
+//
+//        if (id == R.id.action_about) {
+//            //launch about page HERE eventually
+//
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
