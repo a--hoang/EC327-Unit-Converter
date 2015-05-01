@@ -69,9 +69,6 @@ public class ComputerNumbers extends Activity {
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double initialValue;
-
-
                 //if text box is empty, do nothing
                 if (TextUtils.isEmpty(input_value.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Please enter a value", Toast.LENGTH_SHORT).show();
@@ -80,15 +77,21 @@ public class ComputerNumbers extends Activity {
 
                 ui = input_unit.getSelectedItem().toString();
                 uf = output_unit.getSelectedItem().toString();
-                if (ui.equals("Choose") || uf.equals("Choose")) {
+                if (ui.equals("Choose:") || uf.equals("Choose:")) {
                     Toast.makeText(getApplicationContext(), "Please choose units", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 //binary
-                if (ui.equals( "Binary"))
+                if (ui.equals("Binary"))
                 {
+                    //check if binary
+                    if(binaryInCheck(input_value.getText().toString()) == false){
+                        Toast.makeText(getApplicationContext(), "Please enter 1s & 0s only", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Binary Bin_obj= new Binary(input_value.getText().toString());
+
                     if (uf.equals("Decimal"))
                     {
                         output_value.setText(Integer.toString(Bin_obj.BinToDec()));
@@ -110,6 +113,11 @@ public class ComputerNumbers extends Activity {
                 //decimal
                 if (ui.equals( "Decimal"))
                 {
+                    //check if decimal
+                    if(!decimalInCheck(input_value.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Please enter positive integers only", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Decimal Dec_obj= new Decimal(Integer.parseInt(input_value.getText().toString()));
                     if (uf.equals("Decimal"))
                     {
@@ -131,6 +139,11 @@ public class ComputerNumbers extends Activity {
                 //hexadecimal
                 if (ui.equals( "Hexadecimal"))
                 {
+                    //check if hexadecimal
+                    if(!hexaDecimalInCheck(input_value.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Please enter 1-9 and a-f only", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Hexadecimal Hex_obj= new Hexadecimal(input_value.getText().toString());
                     if (uf.equals("Decimal"))
                     {
@@ -152,8 +165,12 @@ public class ComputerNumbers extends Activity {
                 //octal
                 if (ui.equals( "Octal"))
                 {
+                    //check if octal
+                    if(!octalInCheck(input_value.getText().toString())){
+                        Toast.makeText(getApplicationContext(), "Please enter 1-8 digits only", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     Octal Oct_obj= new Octal(input_value.getText().toString());
-                    // CONVERSIONS FAIL FOR 8-9 in single digit place -- TODO implement error check for octal input
                     if (uf.equals("Decimal"))
                     {
                         output_value.setText(Integer.toString(Oct_obj.OctToDec()));
@@ -187,4 +204,65 @@ public class ComputerNumbers extends Activity {
             }
         });
     }
+
+    //check binary input - return true if acceptable
+    public boolean binaryInCheck(String s){
+        try {
+            int temp = Integer.parseInt(s, 2);
+            if(temp < 0){
+                return false;
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("Not Binary Format");
+            return false;
+        }
+        return true;
+    }
+
+    //check decimal input - return true if acceptable
+    public boolean decimalInCheck(String s){
+        try {
+            int temp = Integer.parseInt(s, 10);
+            if(temp < 0){
+                return false;
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("Not Decimal Format");
+            return false;
+        }
+        return true;
+    }
+
+    //check hexadecimal input - return true if acceptable
+    public boolean hexaDecimalInCheck(String s){
+        try {
+            int temp = Integer.parseInt(s, 16);
+            if(temp < 0){
+                return false;
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("Not hexaDecimal Format");
+            return false;
+        }
+        return true;
+    }
+
+    //check octal input - return true if acceptable
+    public boolean octalInCheck(String s){
+        try {
+            int temp = Integer.parseInt(s, 8);
+            if(temp < 0){
+                return false;
+            }
+        }
+        catch(NumberFormatException e){
+            System.out.println("Not Octal Format");
+            return false;
+        }
+        return true;
+    }
+
 }
