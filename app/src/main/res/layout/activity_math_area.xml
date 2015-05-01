@@ -132,7 +132,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/numTitle"
             android:textSize="20sp"
-            android:text="@string/number_fact"
+            android:text="Input/Output in Units SQUARED"
             android:gravity="center_horizontal"
             android:layout_below="@+id/planets2_spinner"
             android:layout_alignParentRight="true"
