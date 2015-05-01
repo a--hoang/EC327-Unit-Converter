@@ -1,23 +1,17 @@
 package com.example.ahoang.unitconverter;
 
 import android.app.Activity;
-
-import java.text.DecimalFormat;
-import java.util.Scanner;
-
-
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DecimalFormat;
 
 
 /**
@@ -66,21 +60,6 @@ public class PhysicsMol extends Activity {
         output_value = (TextView) findViewById(R.id.finalAmount_text);
 
         convertbutton = (Button) findViewById(R.id.imageButton);
-
-        //Populate random fact box
-        numTextView = (TextView)findViewById(R.id.numberText);
-        //set api string
-        String temp;
-        try {
-            do {
-                temp = new DownloadTask().execute().get();
-            }while (temp.length() > 90);
-        }
-        catch(Exception e){
-            temp = "Error, connection refused.";
-            System.out.println("Error, connection refused.");
-        }
-        numTextView.setText(temp);
 
         convertbutton.setOnClickListener(new View.OnClickListener() {
             @Override

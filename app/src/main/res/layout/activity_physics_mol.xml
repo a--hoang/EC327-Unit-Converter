@@ -134,7 +134,6 @@
             android:hint="Final Amount"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
-            android:layout_above="@+id/numTitle"
             android:layout_alignRight="@+id/imageButton"
             android:layout_alignEnd="@+id/imageButton"
             android:layout_alignLeft="@+id/imageButton"
@@ -157,32 +156,6 @@
         <View
             android:layout_width="0dp"
             android:layout_height="20dp"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/numTitle"
-            android:textSize="20sp"
-            android:text="@string/number_fact"
-            android:gravity="center_horizontal"
-            android:layout_below="@+id/planets2_spinner"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:textColor="@color/white"/>
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/number_api"
-            android:id="@+id/numberText"
-            android:textSize="30sp"
-            android:gravity="center_horizontal"
-            android:paddingTop="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/numTitle"
-            android:layout_alignRight="@+id/numTitle"
-            android:layout_alignEnd="@+id/numTitle"
-            android:textColor="@color/white"/>
 
 
     </RelativeLayout>
