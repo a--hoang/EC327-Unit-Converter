@@ -33,9 +33,12 @@ public class DownloadTask extends AsyncTask<String, Long, String> {
             }
             byte[] b = response.getBytes("UTF-8");
             response = new String(b, "UTF-8");
+            //prevent obscene statement from api
+            if(response.contains("masturbate")){
+                response = "Cats are cute.";
+            }
             System.out.println(response);
             return response;
-
         } catch (Exception e) {
             System.out.println("Error: call did not work.");
             return null;
